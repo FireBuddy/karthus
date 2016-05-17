@@ -655,8 +655,7 @@ namespace Karthus
                 var qm = ComboMenu.Get<CheckBox>("CUse_Q").CurrentValue;
                 var wm = ComboMenu.Get<CheckBox>("CUse_W").CurrentValue;
                 var em = ComboMenu.Get<CheckBox>("CUse_E").CurrentValue;
-                var wmm = ComboMenu.Get<Slider>("CEPercent").CurrentValue;
-
+                
                 {
                     if (eTarget == null && E.Handle.ToggleState == 2)
                     {
@@ -697,7 +696,7 @@ namespace Karthus
                         }
 
                         var predW = W.GetPrediction(wTarget);
-                        if (wmm || qTarget.CountAlliesInRange(W.Range) > 1 || player.IsZombie)
+                        if (player.ManaPercent >= HarassMenu.Get<Slider>("HEPercent").CurrentValue) || qTarget.CountAlliesInRange(W.Range) > 1 || player.IsZombie)
                         {
                             W.Cast(predW.CastPosition);
                         }
