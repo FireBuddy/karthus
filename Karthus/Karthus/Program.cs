@@ -544,11 +544,11 @@ namespace Karthus
                     {
                         if (!cz && predQ.HitChance >= HitChance.High)
                         {
-                            Q.Cast(predQ.CastPosition + 50);
+                            Q.Cast(predQ.CastPosition);
                         }
                         else
                         {
-                            Q.Cast(qTarget.ServerPosition + 50);
+                            Q.Cast(qTarget.ServerPosition);
                         }
                     }
                 }
