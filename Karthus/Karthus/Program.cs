@@ -710,11 +710,11 @@ namespace Karthus
                     var predQ = Q2.GetPrediction(qTarget);
                     if (!cz && predQ.HitChance >= HitChance.High)
                     {
-                        Q.Cast(predQ.CastPosition + 50);
+                        Q.Cast(predQ.CastPosition + 25);
                     }
                     else
                     {
-                        Q.Cast(qTarget.ServerPosition + 50);
+                        Q.Cast(qTarget.ServerPosition + 25);
                     }
                 }
             }
