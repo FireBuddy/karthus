@@ -544,7 +544,7 @@ namespace Karthus
                     {
                         if (!cz && predQ.HitChance >= HitChance.High)
                         {
-                            Q.Cast(predQ.CastPosition);
+                            Q.Cast(predQ.CastPosition + 700);
                         }
                         else
                         {
