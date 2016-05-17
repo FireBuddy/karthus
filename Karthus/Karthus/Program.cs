@@ -697,7 +697,7 @@ namespace Karthus
                         }
 
                         var predW = W.GetPrediction(wTarget);
-                        if (wmw || qTarget.CountAlliesInRange(W.Range) > 1 || player.IsZombie)
+                        if (wmm || qTarget.CountAlliesInRange(W.Range) > 1 || player.IsZombie)
                         {
                             W.Cast(predW.CastPosition);
                         }
