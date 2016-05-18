@@ -696,7 +696,7 @@ namespace Karthus
                         }
 
                         var predW = W.GetPrediction(wTarget);
-                        if (player.ManaPercent >= HarassMenu.Get<Slider>("HEPercent").CurrentValue || qTarget.CountAlliesInRange(W.Range) > 1 || player.IsZombie)
+                        if (player.ManaPercent >= HarassMenu.Get<Slider>("HEPercent").CurrentValue || qTarget.CountAlliesInRange(W.Range) > 3 || player.IsZombie)
                         {
                             W.Cast(predW.CastPosition);
                         }
