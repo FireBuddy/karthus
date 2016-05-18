@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -647,7 +647,7 @@ namespace Karthus
             return 0;
         }
 
-        private static bool Combo 
+        private static bool Combo()
         {
             var flags = Orbwalker.ActiveModesFlags;
             if (flags.HasFlag(Orbwalker.ActiveModes.Combo) && menuIni.Get<CheckBox>("Combo").CurrentValue)
