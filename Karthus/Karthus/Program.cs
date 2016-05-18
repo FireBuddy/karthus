@@ -795,7 +795,7 @@ namespace Karthus
                         .Select(xm => xm.ServerPosition.To2D())
                         .ToList(), Q.Width, Q.Range);
 
-                if (Q.IsReady() && bestFarmQ.MinionsHit == 1)
+                if (Q.IsReady() && bestFarmQ.MinionsHit = 1)
                 {
                     Q.Cast(bestFarmQ.Position.To3D());
                 }
