@@ -790,11 +790,6 @@ namespace Karthus
                 {
                     return;
                 }
-            {
-                var minions = EntityManager.MinionsAndMonsters.EnemyMinions;
-
-                if (minions == null || !minions.Any()) return;
-
                 var bestFarmQ =
                 GetBestCircularFarmLocation(
                     EntityManager.MinionsAndMonsters.EnemyMinions.Where(x => x.Distance(Player.Instance) <= Q.Range && (x.CountEnemiesInRange(155) == 0) && x.Health <= (2*QDamage(x)) )
