@@ -816,7 +816,7 @@ namespace Karthus
                     return;
                 }
 
-                var location =
+                var location2 =
                     GetBestCircularFarmLocation(
                         EntityManager.MinionsAndMonsters.EnemyMinions.Where(
                             x =>
