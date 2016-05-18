@@ -790,23 +790,23 @@ namespace Karthus
                 {
                     return;
                 }
+            {
+                var minions = EntityManager.MinionsAndMonsters.EnemyMinions;
 
-                var locationn =
-                    GetBestCircularFarmLocation(
-                        EntityManager.MinionsAndMonsters.EnemyMinions.Where(
-                            x =>
-                            x.Distance(Player.Instance) <= Q.Range && x.Health > 5 && (x.CountEnemiesInRange(155) == 0) && !x.IsDead && x.IsValid
-                            && Prediction.Health.GetPrediction(x, (int)(Q.CastDelay)) < (0.5 * player.GetSpellDamage(x, SpellSlot.Q)))
-                            .Select(xm => xm.ServerPosition.To2D())
-                            .ToList(),
-                        Q.Width,
-                        Q.Range);
+                if (minions == null || !minions.Any()) return;
 
-                if (Q.IsReady() && locationn.MinionsHit == 1)
+                var bestFarmQ =
+                GetBestCircularFarmLocation(
+                    EntityManager.MinionsAndMonsters.EnemyMinions.Where(x => x.Distance(Player.Instance) <= Q.Range && (x.CountEnemiesInRange(155) == 0) && x.Health <= (2*QDamage(x)) )
+                        .Select(xm => xm.ServerPosition.To2D())
+                        .ToList(), Q.Width, Q.Range);
+
+                if (Q.IsReady() && bestFarmQ.MinionsHit > 0)
                 {
-                    Q.Cast(locationn.Position.To3D());
+                    Q.Cast(bestFarmQ.Position.To3D());
                 }
             }
+
 
             if (canQ && player.ManaPercent >= LaneMenu.Get<Slider>("FQPercent").CurrentValue)
             {
