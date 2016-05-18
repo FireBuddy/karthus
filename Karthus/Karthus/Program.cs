@@ -791,7 +791,7 @@ namespace Karthus
                     return;
                 }
 
-                var location =
+                var location7 =
                     GetBestCircularFarmLocation(
                         EntityManager.MinionsAndMonsters.EnemyMinions.Where(
                             x =>
@@ -804,7 +804,7 @@ namespace Karthus
 
                 if (Q.IsReady() && location.MinionsHit <= 1)
                 {
-                    Q.Cast(location.Position.To3D());
+                    Q.Cast(location7.Position.To3D());
                 }
             }
 
