@@ -21,6 +21,8 @@ namespace Karthus
     internal class Program
     {
         private static Vector2 PingLocation;
+        
+        private Obj_AI_Base enemyTurret;
 
         private static int LastPingT = 0;
 
