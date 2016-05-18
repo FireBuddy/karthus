@@ -21,8 +21,6 @@ namespace Karthus
     internal class Program
     {
         private static Vector2 PingLocation;
-        
-        private Obj_AI_Base enemyTurret;
 
         private static int LastPingT = 0;
 
@@ -712,10 +710,13 @@ namespace Karthus
                     var predQ = Q2.GetPrediction(qTarget);
                     if (!cz && predQ.HitChance >= HitChance.High)
                     {
-                        Q.Cast(predQ.CastPosition);
-
+                        Q.Cast(predQ.CastPosition + 75);
+                        Q.Cast(predQ.CastPosition + 50);
+                        Q.Cast(predQ.CastPosition + 25);
+                    }
                     else
                     {
+                        Q.Cast(qTarget.ServerPosition + 75);
                         Q.Cast(predQ.CastPosition + 25);
                     }
                 }
