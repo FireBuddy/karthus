@@ -785,20 +785,20 @@ namespace Karthus
             var canQ = LaneMenu.Get<CheckBox>("LUse_Q").CurrentValue && Q.IsReady();
             if (canQ && player.ManaPercent >= LaneMenu.Get<Slider>("LHQPercent").CurrentValue)
             {
-                var minions = EntityManager.MinionsAndMonsters.EnemyMinions;
+                    var minions2 = EntityManager.MinionsAndMonsters.EnemyMinions;
 
-                if (minions == null || !minions.Any()) return;
+                    if (minions2 == null || !minions2.Any()) return;
 
-                var bestFarmQ =
-                GetBestCircularFarmLocation(
-                    EntityManager.MinionsAndMonsters.EnemyMinions.Where(x => x.Distance(Player.Instance) <= Q.Range && (x.CountEnemiesInRange(155) == 0) && x.Health <= (2*QDamage(x)) )
+                    var bestFarmQ2 =
+                    GetBestCircularFarmLocation(
+                    EntityManager.MinionsAndMonsters.EnemyMinions.Where(x => x.Distance(Player.Instance) <= Q.Range && (x.Health <= QDamage(x)) )
                         .Select(xm => xm.ServerPosition.To2D())
                         .ToList(), Q.Width, Q.Range);
 
-                if (Q.IsReady() && bestFarmQ.MinionsHit > 0)
-                {
-                    Q.Cast(bestFarmQ.Position.To3D());
-                }
+                    if (Q.IsReady() && bestFarmQ2.MinionsHit > 0)
+                    {
+                        Q.Cast(bestFarmQ2.Position.To3D());
+                    }
             }
 
 
