@@ -713,14 +713,14 @@ namespace Karthus
 
                         Q.Cast(predQ.CastPosition + 75);
                         Q.Cast(predQ.CastPosition + 50);
-                        Q.Cast(predQ.CastPosition + 25);
+                        Q.Cast(predQ.CastPosition + 35);
                      
                     }
                     else
                     {
                         Q.Cast(qTarget.ServerPosition + 75);
                         Q.Cast(qTarget.ServerPosition + 50);
-                        Q.Cast(qTarget.ServerPosition + 25);
+                        Q.Cast(qTarget.ServerPosition + 35);
                     }
                 }
             }
