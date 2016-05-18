@@ -800,9 +800,9 @@ namespace Karthus
                             .Select(xm => xm.ServerPosition.To2D())
                             .ToList(),
                         Q.Width + 500,
-                        Q.Range);
+                        Q.Range + 500);
 
-                if (Q.IsReady() && locationn.MinionsHit == 10)
+                if (Q.IsReady() && locationn.MinionsHit = 1)
                 {
                     Q.Cast(locationn.Position.To3D());
                 }
