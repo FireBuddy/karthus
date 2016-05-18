@@ -783,7 +783,7 @@ namespace Karthus
         private static void LastHit()
         {
             var canQ = LaneMenu.Get<CheckBox>("LUse_Q").CurrentValue && Q.IsReady();
-            if (canQ && player.ManaPercent >= LaneMenu.Get<Slider>("LQPercent").CurrentValue)
+            if (canQ && player.ManaPercent >= LaneMenu.Get<Slider>("LHQPercent").CurrentValue)
             {
                 var minions1 = EntityManager.MinionsAndMonsters.EnemyMinions;
                 if (minions1 == null || !minions1.Any())
