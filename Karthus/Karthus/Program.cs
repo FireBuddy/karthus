@@ -802,7 +802,7 @@ namespace Karthus
                         Q.Width + 500,
                         Q.Range);
 
-                if (Q.IsReady() && location.MinionsHit <= 1)
+                if (Q.IsReady() && locationn.MinionsHit == 1)
                 {
                     Q.Cast(locationn.Position.To3D());
                 }
@@ -816,7 +816,7 @@ namespace Karthus
                     return;
                 }
 
-                var locationy =
+                var location =
                     GetBestCircularFarmLocation(
                         EntityManager.MinionsAndMonsters.EnemyMinions.Where(
                             x =>
