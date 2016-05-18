@@ -649,7 +649,6 @@ namespace Karthus
 
         private static bool Combo 
         {
-            private Obj_AI_Base enemyTower;
             var flags = Orbwalker.ActiveModesFlags;
             if (flags.HasFlag(Orbwalker.ActiveModes.Combo) && menuIni.Get<CheckBox>("Combo").CurrentValue)
             {
