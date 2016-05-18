@@ -783,26 +783,6 @@ namespace Karthus
         private static void LastHit()
         {
             var canQ = LaneMenu.Get<CheckBox>("LUse_Q").CurrentValue && Q.IsReady();
-            if (canQ && player.ManaPercent >= LaneMenu.Get<Slider>("LHQPercent").CurrentValue)
-            {
-                    var minions2 = EntityManager.MinionsAndMonsters.EnemyMinions;
-
-                    if (minions2 == null || !minions2.Any()) return;
-
-                    var bestFarmQ2 =
-                    GetBestCircularFarmLocation(
-                    EntityManager.MinionsAndMonsters.EnemyMinions.Where(x => x.Distance(Player.Instance) <= Q.Range && (x.Health <= QDamage(x)) )
-                        .Select(xm => xm.ServerPosition.To2D())
-                        .ToList(), Q.Width, Q.Range);
-
-                    if (Q.IsReady() && bestFarmQ2.MinionsHit > 0)
-                    {
-                        Q.Cast(bestFarmQ2.Position.To3D());
-                    }
-            }
-
-
-
             if (canQ && player.ManaPercent >= LaneMenu.Get<Slider>("FQPercent").CurrentValue)
             {
                 var minions1 = EntityManager.MinionsAndMonsters.EnemyMinions;
@@ -824,7 +804,7 @@ namespace Karthus
 
                 if (Q.IsReady() && location.MinionsHit > 0)
                 {
-                    //Q.Cast(location.Position.To3D());
+                    Q.Cast(location.Position.To3D());
                 }
             }
         }
