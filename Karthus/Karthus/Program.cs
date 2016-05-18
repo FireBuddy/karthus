@@ -829,7 +829,7 @@ namespace Karthus
 
                 if (Q.IsReady() && location.MinionsHit > 0)
                 {
-                    Q.Cast(location.Position.To3D());
+                    //Q.Cast(location.Position.To3D());
                 }
             }
         }
