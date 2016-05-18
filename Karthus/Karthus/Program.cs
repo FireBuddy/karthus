@@ -708,7 +708,6 @@ namespace Karthus
                     }
 
                     var predQ = Q2.GetPrediction(qTarget);
-                    //var turret = GetNearestEnemyTurret();
                     if (!cz && predQ.HitChance >= HitChance.High)
                     {
                         Q.Cast(predQ.CastPosition + 75);
