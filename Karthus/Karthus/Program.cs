@@ -712,7 +712,7 @@ namespace Karthus
                     var predQ = Q2.GetPrediction(qTarget);
                     if (!cz && predQ.HitChance >= HitChance.High)
                     {
-                        Q.Cast(predQ.CastPosition + 75);
+                        Q.Cast(predQ.CastPosition + 75 + enemyTurret.Distance(player.Instance));
                         Q.Cast(predQ.CastPosition + 50);
                         Q.Cast(predQ.CastPosition + 25);
                     }
