@@ -179,9 +179,7 @@ namespace Karthus
             Game.OnUpdate += OnUpdate;
             Drawing.OnDraw += OnDraw;
             Gapcloser.OnGapcloser += Gapcloser_OnGap;
-            Obj_AI_Base.OnBasicAttack += Obj_AI_Base_OnBasicAttack;
         }
-
         private static void Gapcloser_OnGap(AIHeroClient Sender, Gapcloser.GapcloserEventArgs args)
         {
             if (!menuIni.Get<CheckBox>("Misc").CurrentValue || !MiscMenu.Get<CheckBox>("gapcloser").CurrentValue
