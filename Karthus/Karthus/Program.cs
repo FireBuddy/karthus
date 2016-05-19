@@ -177,7 +177,7 @@ namespace Karthus
             DrawMenu.Add("Rtarget", new CheckBox("Draw R Target"));
             DrawMenu.Add("Track", new CheckBox("Track Enemies Health"));
 
-            Game.OnUpdate += Zigzag;
+            Game.OnTick += Zigzag;
             Game.OnUpdate += OnUpdate;
             Drawing.OnDraw += OnDraw;
             Gapcloser.OnGapcloser += Gapcloser_OnGap;
