@@ -181,15 +181,20 @@ namespace Karthus
             Game.OnUpdate += OnUpdate;
             Drawing.OnDraw += OnDraw;
             Gapcloser.OnGapcloser += Gapcloser_OnGap;
-            Obj_AI_Base.OnBasicAttack += Obj_AI_Base_OnBasicAttacknn;
+            Obj_AI_Base.OnBasicAttack += OnBasicAttack;
         }
         
         
-        private static void Cbj_AI_Base_OnBasicAttacknn(Obj_AI_Base sender, GameObjectProcessSpellCastEventArgs args)
+        public static void OnBasicAttack(Obj_AI_Base sender, GameObjectProcessSpellCastEventArgs args)
         {
-            Chat.Print(" 1 Click was made. ");
+            if (!sender.IsMe || !(args.Target is AIHeroClient) || !Q.IsReady() || !Player.CanAttack || !GetOption(OMenu, "C"))
+            {
+                return;
+            }
+            Q.Cast();
+            Orbwalker.ResetAutoAttack();
+            EloBuddy.Player.IssueOrder(GameObjectOrder.AttackTo, args.Target);
         }
-        
  
         private static void Gapcloser_OnGap(AIHeroClient Sender, Gapcloser.GapcloserEventArgs args)
         {
