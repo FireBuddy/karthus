@@ -181,8 +181,15 @@ namespace Karthus
             Game.OnUpdate += OnUpdate;
             Drawing.OnDraw += OnDraw;
             Gapcloser.OnGapcloser += Gapcloser_OnGap;
-            Obj_AI_Base.OnBasicAttack += Obj_AI_Base_OnBasicAttack;
         }
+        #region Event Registering
+        Obj_AI_Base.OnBasicAttack += Obj_AI_Base_OnBasicAttack;
+        #endregion
+        private void Obj_AI_Base_OnBasicAttack(Obj_AI_Base sender, GameObjectProcessSpellCastEventArgs args)
+        {
+
+        }
+        
 
         private static void Obj_AI_Base_OnBasicAttack(Obj_AI_Base sender, GameObjectProcessSpellCastEventArgs args)
         {
