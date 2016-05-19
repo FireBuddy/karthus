@@ -183,6 +183,7 @@ namespace Karthus
             Gapcloser.OnGapcloser += Gapcloser_OnGap;
         }
         
+        Obj_AI_Base.OnBasicAttack += Obj_AI_Base_OnBasicAttack;
         internal static void Cbj_AI_Base_OnBasicAttack(Obj_AI_Base sender, GameObjectProcessSpellCastEventArgs args)
         {
             Chat.Print(" 1 Click was made. ");
