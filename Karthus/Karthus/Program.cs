@@ -72,13 +72,6 @@ namespace Karthus
 
         private static bool nowE = false;
 
-        public static void Init()
-        {
-            //Targetted Spells
-            Obj_AI_Base.OnProcessSpellCast += Obj_AI_Base_OnProcessSpellCast;
-            //Turrets AAs
-            Obj_AI_Base.OnBasicAttack += Obj_AI_Base_OnBasicAttack;
-        }
 
         public static void Execute()
         {
@@ -188,7 +181,20 @@ namespace Karthus
             Game.OnUpdate += OnUpdate;
             Drawing.OnDraw += OnDraw;
             Gapcloser.OnGapcloser += Gapcloser_OnGap;
+            Obj_AI_Base.OnBasicAttack += Obj_AI_Base_OnBasicAttack;
         }
+        private static void Obj_AI_Base_OnBasicAttack(Obj_AI_Base sender, GameObjectProcessSpellCastEventArgs args)
+        {
+            var tower = sender as Obj_AI_Turret;
+            var target = args.Target as Obj_AI_Base;
+            if (tower != null && target != null && target.IsAlly)
+            {
+                var a = new TurretAA(target);
+                TurretAAs.Add(a);
+                Core.DelayAction(() => TurretAAs.Remove(a), 100);
+            }
+        }
+
         private static void Gapcloser_OnGap(AIHeroClient Sender, Gapcloser.GapcloserEventArgs args)
         {
             if (!menuIni.Get<CheckBox>("Misc").CurrentValue || !MiscMenu.Get<CheckBox>("gapcloser").CurrentValue
