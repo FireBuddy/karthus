@@ -184,16 +184,25 @@ namespace Karthus
         }
         
         
-        public static void OnBasicAttack(Obj_AI_Base sender, GameObjectProcessSpellCastEventArgs args)
-        {
-            if (!sender.IsMe || !(args.Target is AIHeroClient) || !Q.IsReady() || !Player.CanAttack || !GetOption(OMenu, "C"))
-            {
-                return;
+
+
+        
+
+        private static bool IsWindingUp = false;
+        
+        Obj_AI_Base.OnProcessSpellCast += delegate(sender, args) {
+            if (sender.IsMe) {
+                IsWindingUp = true;
             }
-            Q.Cast();
-            Orbwalker.ResetAutoAttack();
-            EloBuddy.Player.IssueOrder(GameObjectOrder.AttackTo, args.Target);
-        }
+        };
+        
+        Obj_AI_Base.OnSpellCast += delegate(sender, args){
+            if (sender.IsMe) {
+                IsWindingUp = false;
+            }
+        };
+
+
  
         private static void Gapcloser_OnGap(AIHeroClient Sender, Gapcloser.GapcloserEventArgs args)
         {
