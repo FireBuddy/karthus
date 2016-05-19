@@ -17,6 +17,7 @@ namespace Karthus
 
         private static void Loading_OnLoadingComplete(EventArgs args)
         {
+            Obj_AI_Base.OnBasicAttack += Obj_AI_Base_OnBasicAttack;
             Program.Execute();
         }
     }
