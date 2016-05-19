@@ -183,12 +183,27 @@ namespace Karthus
             Gapcloser.OnGapcloser += Gapcloser_OnGap;
         }
         #region Event Registering
-        Obj_AI_Base.OnBasicAttack += Obj_AI_Base_OnBasicAttack;
-        #endregion
-        private void Obj_AI_Base_OnBasicAttack(Obj_AI_Base sender, GameObjectProcessSpellCastEventArgs args)
-        {
+            var registered = false;
+            var registerEvents = new Action(() =>
+            {
+                // Only register events once
+                if (registered)
+                {
+                    return;
+                }
+                registered = true;
 
-        }
+                // Listen to required events
+                Obj_AI_Base.OnBasicAttack += delegate(Obj_AI_Base sender, GameObjectProcessSpellCastEventArgs args)
+                {
+                    if (BasicAttack)
+                    {
+                        Verify(sender, args, "OnBasicAttack", RecursiveCheck);
+                    }
+                };
+            });
+        #endregion
+
         
 
         private static void Obj_AI_Base_OnBasicAttack(Obj_AI_Base sender, GameObjectProcessSpellCastEventArgs args)
