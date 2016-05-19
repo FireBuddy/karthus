@@ -200,7 +200,7 @@ namespace Karthus
               //  if (MiscMenu.Get<CheckBox>("SaveR").CurrentValue && player.Level >= 6 && R.IsLearned
              //       && player.Mana - (SaveR() / 3) > R.Handle.SData.Mana)
              //   {
-                    W.Cast(predw.CastPosition);
+                //    W.Cast(predw.CastPosition);
             //    }
           //  }
           //  var predq = Q.GetPrediction(Sender);
