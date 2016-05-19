@@ -4,7 +4,6 @@ using System.Linq;
 
 using EloBuddy;
 using EloBuddy.SDK;
-using EloBuddy.SDK.Constants;
 
 using SharpDX;
 
@@ -182,18 +181,7 @@ namespace Karthus
             Game.OnUpdate += OnUpdate;
             Drawing.OnDraw += OnDraw;
             Gapcloser.OnGapcloser += Gapcloser_OnGap;
-            Obj_AI_Base.OnBasicAttack += Obj_AI_Base_OnBasicAttack;
-        }
-        private static void Obj_AI_Base_OnBasicAttack(Obj_AI_Base sender, GameObjectProcessSpellCastEventArgs args)
-        {
-            var tower = sender as Obj_AI_Turret;
-            var target = args.Target as Obj_AI_Base;
-            if (tower != null && target != null && target.IsAlly)
-            {
-                var a = new TurretAA(target);
-                TurretAAs.Add(a);
-                Core.DelayAction(() => TurretAAs.Remove(a), 100);
-            }
+            AIHeroClient.OnProcessSpellCast += AIHeroClient_OnProcessSpellCast;
         }
 
         private static void Gapcloser_OnGap(AIHeroClient Sender, Gapcloser.GapcloserEventArgs args)
