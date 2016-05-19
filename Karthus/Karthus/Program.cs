@@ -181,37 +181,36 @@ namespace Karthus
             Game.OnUpdate += OnUpdate;
             Drawing.OnDraw += OnDraw;
             Gapcloser.OnGapcloser += Gapcloser_OnGap;
-            Obj_AI_Base.OnProcessSpellCast += Obj_AI_Base_OnProcessSpell; 
         }
         
         
 
 
  
-        private static void Gapcloser_OnGap(AIHeroClient Sender, Gapcloser.GapcloserEventArgs args)
-        {
-            if (!menuIni.Get<CheckBox>("Misc").CurrentValue || !MiscMenu.Get<CheckBox>("gapcloser").CurrentValue
-                || ObjectManager.Player.ManaPercent < MiscMenu.Get<Slider>("gapclosermana").CurrentValue || Sender == null)
-            {
-                return;
-            }
-            var predw = W.GetPrediction(Sender);
-            if (Sender.IsValidTarget(W.Range) && W.IsReady() && !Sender.IsAlly && !Sender.IsMe)
-            {
-                if (MiscMenu.Get<CheckBox>("SaveR").CurrentValue && player.Level >= 6 && R.IsLearned
-                    && player.Mana - (SaveR() / 3) > R.Handle.SData.Mana)
-                {
+        //private static void Gapcloser_OnGap(AIHeroClient Sender, Gapcloser.GapcloserEventArgs args)
+        //{
+            //if (!menuIni.Get<CheckBox>("Misc").CurrentValue || !MiscMenu.Get<CheckBox>("gapcloser").CurrentValue
+               // || ObjectManager.Player.ManaPercent < MiscMenu.Get<Slider>("gapclosermana").CurrentValue || Sender == null)
+           // {
+                //return;
+           // }
+           // var predw = W.GetPrediction(Sender);
+           // if (Sender.IsValidTarget(W.Range) && W.IsReady() && !Sender.IsAlly && !Sender.IsMe)
+           // {
+              //  if (MiscMenu.Get<CheckBox>("SaveR").CurrentValue && player.Level >= 6 && R.IsLearned
+             //       && player.Mana - (SaveR() / 3) > R.Handle.SData.Mana)
+             //   {
                     W.Cast(predw.CastPosition);
-                }
-            }
-            var predq = Q.GetPrediction(Sender);
-            if (Sender.IsValidTarget(Q.Range) && Q.IsReady() && !Sender.IsAlly && !Sender.IsMe)
-            {
-                {
-                    Q.Cast(predq.CastPosition);
-                }
-            }
-        }
+            //    }
+          //  }
+          //  var predq = Q.GetPrediction(Sender);
+           // if (Sender.IsValidTarget(Q.Range) && Q.IsReady() && !Sender.IsAlly && !Sender.IsMe)
+           // {
+               // {
+                  //  Q.Cast(predq.CastPosition);
+              //  }
+          //  }
+      //  }
 
         private static void Ping(Vector2 position)
         {
