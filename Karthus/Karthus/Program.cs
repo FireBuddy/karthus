@@ -187,9 +187,9 @@ namespace Karthus
         
         private static void Obj_AI_Base_OnBasicAttack(Obj_AI_Base sender, GameObjectProcessSpellCastEventArgs args)
         {
+            if (Sender == null)
             {
-                Q.Cast(); 
-                return;
+               return;
             }
         }
 
@@ -216,7 +216,7 @@ namespace Karthus
                 {
                     Q.Cast(predq.CastPosition);
                 }
-            }
+            } 
         }
 
         private static void Ping(Vector2 position)
