@@ -787,9 +787,9 @@ namespace Karthus
                 {
                     if (BasicAttack)
                     {
-                        CastQ(Target);
+                        
                     }
-                };
+                }
         }
 
 
