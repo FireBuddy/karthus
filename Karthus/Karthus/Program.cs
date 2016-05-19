@@ -195,7 +195,7 @@ namespace Karthus
             if (Sender.IsValidTarget(Q.Range) && Q.IsReady() && !Sender.IsAlly && !Sender.IsMe && !Sender.IsMinion && !Sender.IsMonster)
             {
                 {
-                    Q.Cast(predq.CastPosition);
+                    Q.Cast(Target.ServerPosition);
                 }
             } 
         }
