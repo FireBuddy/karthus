@@ -185,7 +185,7 @@ namespace Karthus
         }
         
         
-        internal static void Cbj_AI_Base_OnBasicAttack(Obj_AI_Base sender, GameObjectProcessSpellCastEventArgs args)
+        public static void Cbj_AI_Base_OnBasicAttack(Obj_AI_Base sender, GameObjectProcessSpellCastEventArgs args)
         {
             Chat.Print(" 1 Click was made. ");
         }
