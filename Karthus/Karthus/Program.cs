@@ -781,33 +781,17 @@ namespace Karthus
         }
 
         private static void LastHit()
-        {
-            var canQ = LaneMenu.Get<CheckBox>("LUse_Q").CurrentValue && Q.IsReady();
-            if (canQ && player.ManaPercent >= LaneMenu.Get<Slider>("LHQPercent").CurrentValue)
-            {
-                var minions1 = EntityManager.MinionsAndMonsters.EnemyMinions;
-                if (minions1 == null || !minions1.Any())
+        {  
+            Obj_AI_Base.OnBasicAttack += delegate(Obj_AI_Base sender, GameObjectProcessSpellCastEventArgs args)
+            if (sender.Distance(Player.Instance) > 900) return;     
                 {
-                    return;
-                }
-
-                var location =
-                    GetBestCircularFarmLocation(
-                        EntityManager.MinionsAndMonsters.EnemyMinions.Where(
-                            x =>
-                            x.Distance(Player.Instance) <= Q.Range && x.Health > 5 && !x.IsDead && x.IsValid
-                            && (Prediction.Health.GetPrediction(x, (int)(Q.CastDelay * 1000)) < player.GetSpellDamage(x, SpellSlot.Q)))
-                            .Select(xm => xm.ServerPosition.To2D())
-                            .ToList(),
-                        Q.Width,
-                        Q.Range);
-
-                if (Q.IsReady() && location.MinionsHit > 0)
-                {
-                    Q.Cast(location.Position.To3D());
-                }
-            }
+                    if (BasicAttack)
+                    {
+                        CastQ(Target);
+                    }
+                };
         }
+
 
         private static void Ult()
         {
