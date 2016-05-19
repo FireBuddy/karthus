@@ -187,6 +187,13 @@ namespace Karthus
         
         private static void Obj_AI_Base_OnBasicAttack(Obj_AI_Base sender, GameObjectProcessSpellCastEventArgs args)
         {
+                  if (args.Order == GameObjectOrder.MoveTo || args.Order == GameObjectOrder.AttackUnit || args.Order == GameObjectOrder.AttackTo )
+
+                     {
+
+                        Chat.Print(" 1 Click was made. ");
+
+                     }
 
         }
 
