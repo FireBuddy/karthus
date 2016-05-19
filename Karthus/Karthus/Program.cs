@@ -181,12 +181,25 @@ namespace Karthus
             Game.OnUpdate += OnUpdate;
             Drawing.OnDraw += OnDraw;
             Gapcloser.OnGapcloser += Gapcloser_OnGap;
-            AIHeroClient.OnBasicAttack += Obj_AI_Base_OnBasicAttack;
+            Obj_AI_Base.OnBasicAttack += Obj_AI_Base_OnBasicAttack;
         }
 
-        private void Obj_AI_Base_OnBasicAttack(AIHeroClient sender, GameObjectProcessSpellCastEventArgs args)
+        private static void Obj_AI_Base_OnBasicAttack(Obj_AI_Base sender, GameObjectProcessSpellCastEventArgs args)
         {
-
+                       if (!menuIni.Get<CheckBox>("Misc").CurrentValue || !MiscMenu.Get<CheckBox>("gapcloser").CurrentValue
+                || ObjectManager.Player.ManaPercent < MiscMenu.Get<Slider>("gapclosermana").CurrentValue || Sender == null)
+            {
+                return;
+            }
+            var predw = W.GetPrediction(Sender);
+            if (Sender.IsValidTarget(W.Range) && W.IsReady() && !Sender.IsAlly && !Sender.IsMe)
+            {
+                if (MiscMenu.Get<CheckBox>("SaveR").CurrentValue && player.Level >= 6 && R.IsLearned
+                    && player.Mana - (SaveR() / 3) > R.Handle.SData.Mana)
+                {
+                    W.Cast(predw.CastPosition);
+                }
+            }
         }
         
         private static void Gapcloser_OnGap(AIHeroClient Sender, Gapcloser.GapcloserEventArgs args)
