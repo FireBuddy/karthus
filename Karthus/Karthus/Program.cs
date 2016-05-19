@@ -192,7 +192,7 @@ namespace Karthus
                return;
             }
             var predq = Q.GetPrediction(Sender);
-            if (Sender.IsValidTarget(Q.Range) && Q.IsReady() && !Sender.IsAlly && !Sender.IsMe && Sender.IsEnemy)
+            if (Sender.IsValidTarget(Q.Range) && Q.IsReady() && !Sender.IsAlly && !Sender.IsMe && !Sender.IsMinion)
             {
                 {
                     Q.Cast(predq.CastPosition);
