@@ -180,10 +180,6 @@ namespace Karthus
             Drawing.OnDraw += OnDraw;
             Gapcloser.OnGapcloser += Gapcloser_OnGap;
         }
-        public static void OnGameLoad(EventArgs args)
-        {
-            Obj_AI_Base.OnBasicAttack += OnBasicAttack;
-        }
 
         private static void Gapcloser_OnGap(AIHeroClient Sender, Gapcloser.GapcloserEventArgs args)
         {
