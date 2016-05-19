@@ -181,26 +181,10 @@ namespace Karthus
             Game.OnUpdate += OnUpdate;
             Drawing.OnDraw += OnDraw;
             Gapcloser.OnGapcloser += Gapcloser_OnGap;
+            Obj_AI_Base.OnProcessSpellCast += Obj_AI_Base_OnProcessSpell; 
         }
         
         
-
-
-        
-
-        private static bool IsWindingUp = false;
-        
-        Obj_AI_Base.OnProcessSpellCast += delegate(sender, args) {
-            if (sender.IsMe) {
-                IsWindingUp = true;
-            }
-        };
-        
-        Obj_AI_Base.OnSpellCast += delegate(sender, args){
-            if (sender.IsMe) {
-                IsWindingUp = false;
-            }
-        };
 
 
  
