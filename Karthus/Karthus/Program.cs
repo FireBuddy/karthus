@@ -786,14 +786,7 @@ namespace Karthus
 
         private static void LastHit()
         {  
-            Obj_AI_Base.OnBasicAttack += delegate(Obj_AI_Base sender, GameObjectProcessSpellCastEventArgs args)
-            if (sender.Distance(Player.Instance) > 900) return;     
-                {
-                    if (BasicAttack)
-                    {
-                        
-                    }
-                }
+
         }
 
 
