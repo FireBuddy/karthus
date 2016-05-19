@@ -4,6 +4,7 @@ using System.Linq;
 
 using EloBuddy;
 using EloBuddy.SDK;
+using EloBuddy.SDK.Constants;
 
 using SharpDX;
 
