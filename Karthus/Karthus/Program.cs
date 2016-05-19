@@ -188,7 +188,7 @@ namespace Karthus
 
  
         private static void Gapcloser_OnGap(AIHeroClient Sender, Gapcloser.GapcloserEventArgs args)
-        //{
+        {
             //if (!menuIni.Get<CheckBox>("Misc").CurrentValue || !MiscMenu.Get<CheckBox>("gapcloser").CurrentValue
                // || ObjectManager.Player.ManaPercent < MiscMenu.Get<Slider>("gapclosermana").CurrentValue || Sender == null)
            // {
@@ -210,7 +210,7 @@ namespace Karthus
                   //  Q.Cast(predq.CastPosition);
               //  }
           //  }
-      //  }
+        }
 
         private static void Ping(Vector2 position)
         {
