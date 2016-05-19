@@ -182,7 +182,24 @@ namespace Karthus
             Drawing.OnDraw += OnDraw;
             Gapcloser.OnGapcloser += Gapcloser_OnGap;
         }
+        
+        internal static void Click (Obj_AI_Base sender, PlayerIssueOrderEventArgs args)
 
+        {
+
+            if (args.Order == GameObjectOrder.MoveTo || args.Order == GameObjectOrder.AttackUnit || args.Order == GameObjectOrder.AttackTo )
+
+            {
+
+                Chat.Print(" 1 Click was made. ");
+
+            }
+
+ 
+
+        }
+        
+ 
         private static void Gapcloser_OnGap(AIHeroClient Sender, Gapcloser.GapcloserEventArgs args)
         {
             if (!menuIni.Get<CheckBox>("Misc").CurrentValue || !MiscMenu.Get<CheckBox>("gapcloser").CurrentValue
