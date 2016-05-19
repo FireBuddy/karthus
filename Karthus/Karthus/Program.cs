@@ -72,6 +72,14 @@ namespace Karthus
 
         private static bool nowE = false;
 
+        public static void Init()
+        {
+            //Targetted Spells
+            Obj_AI_Base.OnProcessSpellCast += Obj_AI_Base_OnProcessSpellCast;
+            //Turrets AAs
+            Obj_AI_Base.OnBasicAttack += Obj_AI_Base_OnBasicAttack;
+        }
+
         public static void Execute()
         {
             if (player.ChampionName != "Karthus")
@@ -84,7 +92,7 @@ namespace Karthus
             W = new Spell.Skillshot(SpellSlot.W, 875, SkillShotType.Circular, 500, int.MaxValue, 70);
             E = new Spell.Active(SpellSlot.E, 510);
             R = new Spell.Skillshot(SpellSlot.R, 25000, SkillShotType.Circular, 3000, int.MaxValue, int.MaxValue);
-            AIHeroClient.OnProcessSpellCast += AIHeroClient_OnProcessSpellCast;
+
 
             menuIni = MainMenu.AddMenu("Karthus", "Karthus");
             menuIni.AddGroupLabel("Welcome to the Worst Karthus addon!");
