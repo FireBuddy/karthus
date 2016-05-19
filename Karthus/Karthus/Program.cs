@@ -181,11 +181,11 @@ namespace Karthus
             Game.OnUpdate += OnUpdate;
             Drawing.OnDraw += OnDraw;
             Gapcloser.OnGapcloser += Gapcloser_OnGap;
-            Obj_AI_Base.OnBasicAttack += Obj_AI_Base_OnBasicAttack;
+            Obj_AI_Base.OnBasicAttack += Obj_AI_Base_OnBasicAttacknn;
         }
         
         
-        public static void Cbj_AI_Base_OnBasicAttack(Obj_AI_Base sender, GameObjectProcessSpellCastEventArgs args)
+        private static void Cbj_AI_Base_OnBasicAttacknn(Obj_AI_Base sender, GameObjectProcessSpellCastEventArgs args)
         {
             Chat.Print(" 1 Click was made. ");
         }
