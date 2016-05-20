@@ -734,6 +734,7 @@ namespace Karthus
                         return false;
                     }
                     if (qTarget.IsInRange(Player.Instance, Q.Range - 100))
+                    {
                         var predQ = Q2.GetPrediction(qTarget);
                         if (!cz && predQ.HitChance >= HitChance.High)
                             {
@@ -743,7 +744,7 @@ namespace Karthus
                                     Q.Cast(predQ.CastPosition + 35);
                                  
                             }
-                    
+                    }
                     else
                     {
                         Q.Cast(qTarget.ServerPosition + 50);
