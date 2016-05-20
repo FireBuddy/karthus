@@ -187,7 +187,7 @@ namespace Karthus
         
         private static void Obj_AI_Base_OnBasicAttack(Obj_AI_Base Sender, GameObjectProcessSpellCastEventArgs args)
         {
-            if (Sender == null)
+            if (Sender == null && !Orbwalker.ActiveModesFlags.HasFlag(Orbwalker.ActiveModes.Combo))
             {
                return;
             }
