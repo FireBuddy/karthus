@@ -733,19 +733,17 @@ namespace Karthus
                     {
                         return false;
                     }
-                    var predQ = Q2.GetPrediction(qTarget);
-                    if (!cz && predQ.HitChance >= HitChance.High)
-                    {
-                        var disQ =  Player.Distance(qTarget.ServerPosition);
-                        if (disQ <= Q.range)
+                    if (qTarget.IsValidTarget(Q.Range > 750))
+                        var predQ = Q2.GetPrediction(qTarget);
+                        if (!cz && predQ.HitChance >= HitChance.High)
                         {
-                            Q.Cast(Player.Instance.Position.Extend(qTarget.ServerPosition, 875).To3D());
-                            Q.Cast(predQ.CastPosition + 75);
-                            Q.Cast(predQ.CastPosition + 50);
-                            Q.Cast(predQ.CastPosition + 35);
-                         
+                                Q.Cast(Player.Instance.Position.Extend(qTarget.ServerPosition, 875).To3D());
+                                Q.Cast(predQ.CastPosition + 75);
+                                Q.Cast(predQ.CastPosition + 50);
+                                Q.Cast(predQ.CastPosition + 35);
+                             
                         }
-                    }
+                    
                     else
                     {
                         Q.Cast(qTarget.ServerPosition + 50);
