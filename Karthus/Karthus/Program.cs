@@ -733,7 +733,7 @@ namespace Karthus
                     {
                         return false;
                     }
-                    if (player.Distance(qTarget.ServerPosition) => 750)
+                    if (Player.Distance(qTarget.ServerPosition) < 750)
                     {
                         var predQ = Q2.GetPrediction(qTarget);
                         if (!cz && predQ.HitChance >= HitChance.High)
