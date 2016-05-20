@@ -735,7 +735,7 @@ namespace Karthus
                     }
 
                     var predQ = Q2.GetPrediction(qTarget);
-                    if (!cz && predQ.HitChance >= HitChance.High)
+                    if (!cz && predQ.HitChance >= HitChance.High && (player.Distance(qTarget.ServerPosition) <= 750)
                     {
                         Q.Cast(Player.Instance.Position.Extend(qTarget.ServerPosition, 875).To3D());
                         Q.Cast(predQ.CastPosition + 75);
@@ -743,12 +743,13 @@ namespace Karthus
                         Q.Cast(predQ.CastPosition + 35);
                      
                     }
+                    else if (!cz && predQ.HitChance >= HitChance.High && (player.Distance(qTarget.ServerPosition) >= 750)
+                    {
+                        Q.Cast(Player.Instance.Position.Extend(qTarget.ServerPosition, 875).To3D()); 
+                    }
                     else
                     {
-                        Q.Cast(qTarget.ServerPosition + 100);
-                        Q.Cast(qTarget.ServerPosition + 75);
-                        Q.Cast(qTarget.ServerPosition + 50);
-                        Q.Cast(qTarget.ServerPosition + 35);
+                        Q.Cast(qTarget.ServerPosition + 50)
                     }
                 }
             }
