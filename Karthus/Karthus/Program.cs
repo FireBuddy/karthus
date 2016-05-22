@@ -216,11 +216,10 @@ namespace Karthus
                     W.Cast(predw.CastPosition);
                 }
             }
-            var predq = Q.GetPrediction(Sender);
             if (Sender.IsValidTarget(Q.Range) && Q.IsReady() && !Sender.IsAlly && !Sender.IsMe)
             {
                 {
-                    Q.Cast(predq.CastPosition);
+                    Q.Cast(Sender);
                 }
             } 
         }
