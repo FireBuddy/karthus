@@ -201,13 +201,13 @@ namespace Karthus
 
  
 
-        private static void Gapcloser_OnGapCloser(AIHeroClient sender, Gapcloser.GapcloserEventArgs gapcloser)
+        private static void Gapcloser_OnGapCloser(AIHeroClient Sender, Gapcloser.GapcloserEventArgs gapcloser)
         {
-            if (W.IsReady() && Player.Distance(sender) < 600 && sender.IsEnemy)
+            if (W.IsReady() && Player.Distance(Sender) < 600 && Sender.IsEnemy)
                 W.Cast(gapcloser.Sender);
         }
         {
-            if (Q.IsReady() && Player.Distance(sender) < Q.Range && sender.IsEnemy)
+            if (Q.IsReady() && Player.Distance(Sender) < Q.Range && Sender.IsEnemy)
                 Q.Cast(gapcloser.Sender);
         }
 
