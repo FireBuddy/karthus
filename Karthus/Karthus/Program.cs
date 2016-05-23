@@ -199,7 +199,7 @@ namespace Karthus
                 }
                 if (ObjectManager.Player.Position.Distance(qTarget.ServerPosition) > 800)
                 {
-                    Q.Cast(Sender.ServerPosition);
+                    Q.Cast(Player.Instance.Position.Extend(qTarget.ServerPosition, 875).To3D());
                 }
             } 
         }
@@ -743,9 +743,6 @@ namespace Karthus
                         if (ObjectManager.Player.Position.Distance(qTarget.ServerPosition) <= 750)   
                             {
                                     Q.Cast(predQ.CastPosition + 75);
-                                    Q.Cast(predQ.CastPosition + 50);
-                                    Q.Cast(predQ.CastPosition + 35);
-                                 
                             }
                         if (ObjectManager.Player.Position.Distance(qTarget.ServerPosition) > 750)   
                             {
