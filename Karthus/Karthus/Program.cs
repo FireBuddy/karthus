@@ -193,11 +193,14 @@ namespace Karthus
             }
             if (!Sender.IsDashing() && Sender.Type == GameObjectType.AIHeroClient && Sender.IsValidTarget(Q.Range) && Q.IsReady() && Sender.IsEnemy)
             {
-                if (ObjectManager.Player.Position.Distance(qTarget.ServerPosition) <= 800)
+                if (ObjectManager.Player.Position.Distance(qTarget.ServerPosition) <= 825)
                 {
-                    Q.Cast(Sender.ServerPosition + 75)
+                    Q.Cast(Sender.ServerPosition + 50);
                 }
-               
+                if (ObjectManager.Player.Position.Distance(qTarget.ServerPosition) > 825)
+                {
+                    Q.Cast(Sender.ServerPosition);
+                }
             } 
         }
 
