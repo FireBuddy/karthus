@@ -828,13 +828,13 @@ namespace Karthus
                         EntityManager.MinionsAndMonsters.EnemyMinions.Where(
                             x =>
                             x.Distance(Player.Instance) <= Q.Range && x.Health > 5 && !x.IsDead && x.IsValid
-                            && Prediction.Health.GetPrediction(x, (int)(Q.CastDelay = 1000)) < (0.97 * player.GetSpellDamage(x, SpellSlot.Q)))
+                            && Prediction.Health.GetPrediction(x, (int)(Q.CastDelay = 1000)) < (0.95 * player.GetSpellDamage(x, SpellSlot.Q)))
                             .Select(xm => xm.ServerPosition.To2D())
                             .ToList(),
                         Q.Width + 100,
                         Q.Range);
 
-                if (Q.IsReady() && location.MinionsHit < 2)
+                if (Q.IsReady() && location.MinionsHit < 1)
                 {
                     Q.Cast(location.Position.To3D());
                 }
