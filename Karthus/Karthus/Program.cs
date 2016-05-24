@@ -849,7 +849,7 @@ namespace Karthus
                 //}
 
                 //var location =
-                    GetBestCircularFarmLocation(
+  //                  GetBestCircularFarmLocation(
  //                       EntityManager.MinionsAndMonsters.EnemyMinions.Where(
   //                          x =>
    //                         x.Distance(Player.Instance) <= Q.Range && x.Health > 5 && !x.IsDead && x.IsValid
