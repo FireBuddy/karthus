@@ -840,31 +840,31 @@ namespace Karthus
                 }
             }
 
-            if (canQ && player.ManaPercent >= LaneMenu.Get<Slider>("FQPercent").CurrentValue)
-            {
-                var minions1 = EntityManager.MinionsAndMonsters.EnemyMinions;
-                if (minions1 == null || !minions1.Any())
-                {
-                    return;
-                }
+            //if (canQ && player.ManaPercent >= LaneMenu.Get<Slider>("FQPercent").CurrentValue)
+            //{
+                //var minions1 = EntityManager.MinionsAndMonsters.EnemyMinions;
+                //if (minions1 == null || !minions1.Any())
+               // {
+                  //  return;
+                //}
 
-                var location =
+                //var location =
                     GetBestCircularFarmLocation(
-                        EntityManager.MinionsAndMonsters.EnemyMinions.Where(
-                            x =>
-                            x.Distance(Player.Instance) <= Q.Range && x.Health > 5 && !x.IsDead && x.IsValid
-                            && (Prediction.Health.GetPrediction(x, (int)(Q.CastDelay = 1000)) < 0.7 * player.GetSpellDamage(x, SpellSlot.Q)))
-                            .Select(xm => xm.ServerPosition.To2D())
-                            .ToList(),
-                        Q.Width,
-                        Q.Range);
-
-                if (Q.IsReady() && location.MinionsHit > 0)
-                {
-                    Q.Cast(location.Position.To3D());
-                }
-            }
-        }
+ //                       EntityManager.MinionsAndMonsters.EnemyMinions.Where(
+  //                          x =>
+   //                         x.Distance(Player.Instance) <= Q.Range && x.Health > 5 && !x.IsDead && x.IsValid
+   //                         && (Prediction.Health.GetPrediction(x, (int)(Q.CastDelay = 1000)) < 0.7 * player.GetSpellDamage(x, SpellSlot.Q)))
+   //                         .Select(xm => xm.ServerPosition.To2D())
+   //                         .ToList(),
+  //                      Q.Width,
+   //                     Q.Range);
+//
+   //             if (Q.IsReady() && location.MinionsHit > 0)
+    //            {
+   //                 Q.Cast(location.Position.To3D());
+  //              }
+   //         }
+  //      }
 
         private static void Ult()
         {
