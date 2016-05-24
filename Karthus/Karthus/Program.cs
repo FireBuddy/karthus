@@ -746,7 +746,7 @@ namespace Karthus
                             }
                         if (ObjectManager.Player.Position.Distance(qTarget.ServerPosition) > 750)   
                             {
-                                    Q.Cast(Player.Instance.Position.Extend(qTarget.ServerPosition, 875).To3D());
+                                    Q.Cast(Player.Instance.Position.Extend(qTarget.ServerPosition, 874).To3D());
                             }
                         
                     }
@@ -829,7 +829,7 @@ namespace Karthus
                         EntityManager.MinionsAndMonsters.EnemyMinions.Where(
                             x =>
                             x.Distance(Player.Instance) <= Q.Range && x.Health > 5 && !x.IsDead && x.IsValid
-                            && Prediction.Health.GetPrediction(x, (int)(Q.CastDelay = 1000)) < (0.95 * player.GetSpellDamage(x, SpellSlot.Q)))
+                            && Prediction.Health.GetPrediction(x, (int)(Q.CastDelay = 1000)) < (0.93 * player.GetSpellDamage(x, SpellSlot.Q)))
                             .Select(xm => xm.ServerPosition.To2D())
                             .ToList(),
                         Q.Width + 100,
