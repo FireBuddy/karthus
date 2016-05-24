@@ -827,7 +827,7 @@ namespace Karthus
                     GetBestCircularFarmLocation(
                         EntityManager.MinionsAndMonsters.EnemyMinions.Where(
                             x =>
-                            x.Distance(Player.Instance) <= Q.Range && x.Health > 5 && (x.CountEnemyMinionsInRange(155) == 0) && !x.IsDead && x.IsValid
+                            x.Distance(Player.Instance) <= Q.Range && x.Health > 5 && (x.CountMinionsInRange(155) == 0) && !x.IsDead && x.IsValid
                             && Prediction.Health.GetPrediction(x, (int)(Q.CastDelay = 1000)) < (0.95 * player.GetSpellDamage(x, SpellSlot.Q)))
                             .Select(xm => xm.ServerPosition.To2D())
                             .ToList(),
