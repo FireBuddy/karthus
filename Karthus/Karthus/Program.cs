@@ -786,7 +786,33 @@ namespace Karthus
         }
 
         private static void LaneClear()
-        {
+        { 
+            var canQ = LaneMenu.Get<CheckBox>("LUse_Q").CurrentValue && Q.IsReady();
+            if (canQ && player.ManaPercent >= LaneMenu.Get<Slider>("LHQPercent").CurrentValue)
+            {
+                var minions1 = EntityManager.MinionsAndMonsters.EnemyMinions;
+                if (minions1 == null || !minions1.Any())
+                {
+                    return;
+                }
+
+                var location =
+                    GetBestCircularFarmLocation(
+                        EntityManager.MinionsAndMonsters.EnemyMinions.Where(
+                            x =>
+                            x.Distance(Player.Instance) <= Q.Range && x.Health > 5 && !x.IsDead && x.IsValid
+                            && Prediction.Health.GetPrediction(x, (int)(Q.CastDelay = 1000)) < (0.95 * player.GetSpellDamage(x, SpellSlot.Q)))
+                            .Select(xm => xm.ServerPosition.To2D())
+                            .ToList(),
+                        Q.Width + 100,
+                        Q.Range);
+
+                if (Q.IsReady() && location.MinionsHit > 0)
+                {
+                    Q.Cast(location.Position.To3D());
+                }
+            }
+        
             LastHit();
             var canQ = LaneMenu.Get<CheckBox>("FUse_Q").CurrentValue && Q.IsReady();
             if (canQ && Q.IsReady() && player.ManaPercent >= LaneMenu.Get<Slider>("FQPercent").CurrentValue)
@@ -827,7 +853,7 @@ namespace Karthus
                     GetBestCircularFarmLocation(
                         EntityManager.MinionsAndMonsters.EnemyMinions.Where(
                             x =>
-                            x.Distance(Player.Instance) <= Q.Range && x.Health > 5 && (x.CountEnemiesInRange(155) == 0) && !x.IsDead && x.IsValid
+                            x.Distance(Player.Instance) <= Q.Range && x.Health > 5 && !x.IsDead && x.IsValid
                             && Prediction.Health.GetPrediction(x, (int)(Q.CastDelay = 1000)) < (0.95 * player.GetSpellDamage(x, SpellSlot.Q)))
                             .Select(xm => xm.ServerPosition.To2D())
                             .ToList(),
