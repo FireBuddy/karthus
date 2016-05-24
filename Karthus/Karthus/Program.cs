@@ -831,7 +831,7 @@ namespace Karthus
                             && Prediction.Health.GetPrediction(x, (int)(Q.CastDelay = 1000)) < (0.9 * player.GetSpellDamage(x, SpellSlot.Q)))
                             .Select(xm => xm.ServerPosition.To2D())
                             .ToList(),
-                        Q.Width + 5,
+                        Q.Width + 100,
                         Q.Range);
 
                 if (Q.IsReady() && location.MinionsHit == 1)
