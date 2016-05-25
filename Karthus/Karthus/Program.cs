@@ -778,7 +778,7 @@ namespace Karthus
                         Q.Width,
                         Q.Range);
 
-                if (location.MinionsHit <= 1)
+                if (location.MinionsHit > 0)
                 {
                     Q.Cast(location.Position.To3D());
                 }
@@ -835,7 +835,7 @@ namespace Karthus
                         Q.Width + 100,
                         Q.Range);
 
-                if (Q.IsReady() && location.MinionsHit > 0)
+                if (Q.IsReady() && location.MinionsHit > 0 && Orbwalker.LastTarget.NetworkId != location.NetworkId)
                 {
                     Q.Cast(location.Position.To3D());
                 }
