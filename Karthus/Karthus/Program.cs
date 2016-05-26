@@ -224,7 +224,8 @@ namespace Karthus
             if (Sender.IsValidTarget(Q.Range) && Q.IsReady() && !Sender.IsAlly && !Sender.IsMe)
             {
                 {
-                    Q.Cast(Sender);
+                    var predq = Q.GetPrediction(Sender);
+                    Q.Cast(Sender + 50);
                 }
             } 
         }
