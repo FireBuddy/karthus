@@ -225,7 +225,7 @@ namespace Karthus
             {
                 {
                     var predq = Q.GetPrediction(Sender);
-                    Q.Cast(Sender + 50);
+                    Q.Cast(predq.CastPosition + 50);
                 }
             } 
         }
