@@ -80,7 +80,7 @@ namespace Karthus
             }
 
             Q = new Spell.Skillshot(SpellSlot.Q, 875, SkillShotType.Circular, 1000, int.MaxValue, 160);
-            Q2 = new Spell.Skillshot(SpellSlot.Q, 875, SkillShotType.Circular, 650, int.MaxValue, 100);
+            Q2 = new Spell.Skillshot(SpellSlot.Q, 875, SkillShotType.Circular, 650, int.MaxValue, 20);
             W = new Spell.Skillshot(SpellSlot.W, 875, SkillShotType.Circular, 500, int.MaxValue, 70);
             E = new Spell.Active(SpellSlot.E, 510);
             R = new Spell.Skillshot(SpellSlot.R, 25000, SkillShotType.Circular, 3000, int.MaxValue, int.MaxValue);
