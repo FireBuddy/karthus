@@ -582,6 +582,14 @@ namespace Karthus
                         }
                     }
                 }
+                if (wTarget != null)
+                {
+                    var predW = W.GetPrediction(wTarget);
+                    if (ObjectManager.Player.Position.Distance(qTarget.ServerPosition) <= 500 && predW.HitChance >= HitChance.High)   
+                    {
+                        W.Cast(predW.CastPosition);
+                    }
+                }          
 
                 if (HarassMenu.Get<CheckBox>("HUse_E").CurrentValue && HarassMenu.Get<CheckBox>("E_LastHit").CurrentValue && E.IsReady()
                     && !player.IsZombie)
