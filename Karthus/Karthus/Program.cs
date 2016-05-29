@@ -6,7 +6,7 @@ using EloBuddy;
 using EloBuddy.SDK;
 
 using SharpDX;
-
+l
 using EloBuddy.SDK.Menu;
 using EloBuddy.SDK.Menu.Values;
 using EloBuddy.SDK.Enumerations;
@@ -829,11 +829,11 @@ namespace Karthus
                     GetBestCircularFarmLocation(
                         EntityManager.MinionsAndMonsters.EnemyMinions.Where(
                             x =>
-                            x.Distance(Player.Instance) <= Q.Range && Orbwalker.LastTarget.NetworkId != x.NetworkId && x.Health > 5 && !x.IsDead && x.IsValid
-                            && Prediction.Health.GetPrediction(x, (int)(Q.CastDelay = 1000)) < (0.93 * player.GetSpellDamage(x, SpellSlot.Q)))
+                            x.Distance(Player.Instance) <= Q.Range && Orbwalker.LastTarget.NetworkId != x.NetworkId && !x.IsDead && x.IsValid
+                            && Prediction.Health.GetPrediction(x, (int)(Q.CastDelay = 500)) < (0.99 * player.GetSpellDamage(x, SpellSlot.Q)))
                             .Select(xm => xm.ServerPosition.To2D())
                             .ToList(),
-                        Q.Width + 100,
+                        Q.Width + 5,
                         Q.Range);
 
                 if (Q.IsReady() && location.MinionsHit > 0)
