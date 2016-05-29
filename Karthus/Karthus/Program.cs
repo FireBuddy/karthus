@@ -829,10 +829,10 @@ namespace Karthus
                         EntityManager.MinionsAndMonsters.EnemyMinions.Where(
                             x =>
                             x.Distance(Player.Instance) <= Q.Range && Orbwalker.LastTarget.NetworkId != x.NetworkId && !x.IsDead && x.IsValid
-                            && Prediction.Health.GetPrediction(x, (int)(Q.CastDelay = 1000)) < (0.93 * player.GetSpellDamage(x, SpellSlot.Q)))
+                            && Prediction.Health.GetPrediction(x, (int)(Q.CastDelay = 1000)) < (1.95 * player.GetSpellDamage(x, SpellSlot.Q)))
                             .Select(xm => xm.ServerPosition.To2D())
                             .ToList(),
-                        Q.Width + 5,
+                        Q.Width + 30,
                         Q.Range);
 
                 if (Q.IsReady() && location.MinionsHit < 2)
