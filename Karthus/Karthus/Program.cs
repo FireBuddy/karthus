@@ -743,7 +743,7 @@ namespace Karthus
 
                         if (ObjectManager.Player.Position.Distance(qTarget.ServerPosition) <= 750)   
                             {
-                                    Q.Cast(1.1 * predQ.CastPosition);
+                                    Q.Cast(predQ.CastPosition + 75);
                             }
                         if (ObjectManager.Player.Position.Distance(qTarget.ServerPosition) > 750)   
                             {
