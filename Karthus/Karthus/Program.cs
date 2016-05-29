@@ -835,7 +835,7 @@ namespace Karthus
                         Q.Width + 5,
                         Q.Range);
 
-                if (Q.IsReady() && location.MinionsHit > 0)
+                if (Q.IsReady() && location.MinionsHit < 2)
                 {
                     Q.Cast(location.Position.To3D());
                 }
