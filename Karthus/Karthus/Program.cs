@@ -740,7 +740,7 @@ namespace Karthus
                         }
                     }
 
-                    if (qTarget == null || (!qm || !Q.IsReady() || !qTarget.IsValidTarget(Q.Range - 25)))
+                    if (qTarget == null || (!qm || !Q.IsReady() || !qTarget.IsValidTarget(Q.Range - 35)))
                     {
                         return false;
                     }
