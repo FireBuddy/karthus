@@ -740,7 +740,7 @@ namespace Karthus
                         }
                     }
 
-                    if (qTarget == null || (!qm || !Q.IsReady() || !qTarget.IsValid))
+                    if (qTarget == null || (!qm || !Q.IsReady() || !qTarget.IsValid(Q.Range)))
                     {
                         return false;
                     }
@@ -752,7 +752,7 @@ namespace Karthus
                             {
                                     Q.Cast(predQ.CastPosition + 50);
                             }
-                        if (840 >= ObjectManager.Player.Position.Distance(qTarget.ServerPosition)=>750 )   
+                        if (ObjectManager.Player.Position.Distance(qTarget.ServerPosition) > 750 )   
                             {
                                     Q.Cast(Player.Instance.Position.Extend(qTarget.ServerPosition, 874).To3D());
                             }
