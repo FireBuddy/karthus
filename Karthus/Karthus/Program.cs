@@ -583,7 +583,7 @@ namespace Karthus
                         foreach (var Minion in Minions)
                         Q.SourcePosition = Minion.ServerPosition;
                         {
-                            Q.Cast(sender.ServerPosition - 60);
+                            Q.Cast(qTarget.ServerPosition - 60);
                         } 
                     }
                 }
