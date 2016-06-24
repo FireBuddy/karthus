@@ -758,7 +758,7 @@ namespace Karthus
                     }
                     else
                     {
-                        Q.Cast(qTarget.ServerPosition + 50);
+                        Q.Cast(qTarget.ServerPosition);
                     }
                 }
             }
