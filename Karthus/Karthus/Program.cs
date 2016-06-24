@@ -583,7 +583,7 @@ namespace Karthus
                         if (Minion != null)
                         {
                         
-                        var RPos = new Vector3(qTarget.ServerPosition.X - Minion.ServerPosition.X ,  qTarget.ServerPosition.Y, qTarget.ServerPosition.Z);  
+                        var RPos = new Vector3(qTarget.ServerPosition.X ,  qTarget.ServerPosition.Y, qTarget.ServerPosition.Z);  
                         Q.Cast(RPos);
                         } 
                     }
