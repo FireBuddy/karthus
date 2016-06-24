@@ -577,14 +577,15 @@ namespace Karthus
                     var predQ = Q2.GetPrediction(qTarget);
                     if (HarassMenu.Get<CheckBox>("HUse_Q").CurrentValue && Q.IsReady())
                     {
-                        var predQ = Q.GetPrediction(qTarget);
+                        
                         var Minions = EntityManager.MinionsAndMonsters.GetLaneMinions(EntityManager.UnitTeam.Both,qTarget.ServerPosition, 50);
                         foreach (var Minion in Minions)
                         {
+                        var predQ = Q.GetPrediction(qTarget);
                         var RDPos = qTarget.ServerPosition.X - Minion.ServerPosition.X;
                         var RDPos2 = qTarget.ServerPosition.Y - Minion.ServerPosition.Y;
                         var RPos = new Vector3(qTarget.ServerPosition.X + RDPos , qTarget.ServerPosition.Y + RDPos2, qTarget.ServerPosition.Z);  
-                        if (RPos.Distance(predQ.CastPosition) < 50)
+                        
                             {
                             Q.Cast(RPos);
                             }
