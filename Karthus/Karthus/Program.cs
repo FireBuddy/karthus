@@ -6,6 +6,7 @@ using EloBuddy;
 using EloBuddy.SDK;
 
 using SharpDX;
+
 using EloBuddy.SDK.Menu;
 using EloBuddy.SDK.Menu.Values;
 using EloBuddy.SDK.Enumerations;
@@ -80,7 +81,7 @@ namespace Karthus
             }
 
             Q = new Spell.Skillshot(SpellSlot.Q, 875, SkillShotType.Circular, 1000, int.MaxValue, 160);
-            Q2 = new Spell.Skillshot(SpellSlot.Q, 875, SkillShotType.Circular, 500, int.MaxValue, 100);
+            Q2 = new Spell.Skillshot(SpellSlot.Q, 875, SkillShotType.Circular, 650, int.MaxValue, 100);
             W = new Spell.Skillshot(SpellSlot.W, 875, SkillShotType.Circular, 500, int.MaxValue, 70);
             E = new Spell.Active(SpellSlot.E, 510);
             R = new Spell.Skillshot(SpellSlot.R, 25000, SkillShotType.Circular, 3000, int.MaxValue, int.MaxValue);
@@ -192,7 +193,14 @@ namespace Karthus
             }
             if (!Sender.IsDashing() && Sender.Type == GameObjectType.AIHeroClient && Sender.IsValidTarget(Q.Range) && Q.IsReady() && Sender.IsEnemy)
             {
-
+                if (ObjectManager.Player.Position.Distance(qTarget.ServerPosition) <= 800)
+                {
+                    Q.Cast(Sender.ServerPosition + 75);
+                }
+                if (ObjectManager.Player.Position.Distance(qTarget.ServerPosition) > 800)
+                {
+                    Q.Cast(Player.Instance.Position.Extend(qTarget.ServerPosition, 875).To3D());
+                }
             } 
         }
 
@@ -575,14 +583,6 @@ namespace Karthus
                         }
                     }
                 }
-                //if (wTarget != null)
-                //{
-                    //var predW = W.GetPrediction(wTarget);
-                    //if (ObjectManager.Player.Position.Distance(qTarget.ServerPosition) <= 500 && predW.HitChance >= HitChance.High)   
-                    //{
-                    //    W.Cast(predW.CastPosition);
-                    //}
-                //}          
 
                 if (HarassMenu.Get<CheckBox>("HUse_E").CurrentValue && HarassMenu.Get<CheckBox>("E_LastHit").CurrentValue && E.IsReady()
                     && !player.IsZombie)
@@ -733,7 +733,7 @@ namespace Karthus
                         }
                     }
 
-                    if (qTarget == null || (!qm || !Q.IsReady() || !qTarget.IsValidTarget(Q.Range - 35)))
+                    if (qTarget == null || (!qm || !Q.IsReady() || !qTarget.IsValid))
                     {
                         return false;
                     }
@@ -743,9 +743,9 @@ namespace Karthus
 
                         if (ObjectManager.Player.Position.Distance(qTarget.ServerPosition) <= 750)   
                             {
-                                    Q.Cast(predQ.CastPosition + 50);
+                                    Q.Cast(predQ.CastPosition + 75);
                             }
-                        if (ObjectManager.Player.Position.Distance(qTarget.ServerPosition) > 750 )   
+                        if (ObjectManager.Player.Position.Distance(qTarget.ServerPosition) > 750)   
                             {
                                     Q.Cast(Player.Instance.Position.Extend(qTarget.ServerPosition, 874).To3D());
                             }
@@ -829,11 +829,11 @@ namespace Karthus
                     GetBestCircularFarmLocation(
                         EntityManager.MinionsAndMonsters.EnemyMinions.Where(
                             x =>
-                            x.Distance(Player.Instance) <= Q.Range && Orbwalker.OnPreAttack.NetworkId != x.NetworkId && !x.IsDead && x.IsValid
+                            x.Distance(Player.Instance) <= Q.Range && Orbwalker.LastTarget.NetworkId != x.NetworkId && x.Health > 5 && !x.IsDead && x.IsValid
                             && Prediction.Health.GetPrediction(x, (int)(Q.CastDelay = 1000)) < (0.93 * player.GetSpellDamage(x, SpellSlot.Q)))
                             .Select(xm => xm.ServerPosition.To2D())
                             .ToList(),
-                        Q.Width + 5,
+                        Q.Width + 100,
                         Q.Range);
 
                 if (Q.IsReady() && location.MinionsHit > 0)
