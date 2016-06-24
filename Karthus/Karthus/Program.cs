@@ -194,7 +194,7 @@ namespace Karthus
                return;
             }
             CurrentTarget = TargetSelector.GetTarget(SpellManager.Q.Range, DamageType.Magical);
-            var Minions = EntityManager.MinionsAndMonsters.GetLaneMinions(EntityManager.UnitTeam.Both,sender.ServerPosition, 60);
+            var Minions = EntityManager.MinionsAndMonsters.GetLaneMinions(EntityManager.UnitTeam.Both,Sender.ServerPosition, 60);
             foreach (var Minion in Minions)
             if ((sender == CurrentTarget && !Sender.IsDashing() && Sender.Type == GameObjectType.AIHeroClient && Sender.IsValidTarget(Q.Range) && Q.IsReady() && Sender.IsEnemy)
             {
