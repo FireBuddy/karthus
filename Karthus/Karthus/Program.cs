@@ -201,11 +201,11 @@ namespace Karthus
                 
                 if (Minion.Distance(Player.Instance.Position) < Player.Instance.Distance(sender.Position))
                 {
-                  Q.Cast(sender.ServerPosition + Minion.Distance(sender.ServerPosition));
+                  Q.Cast(sender.ServerPosition + 50);
                 }
                 else if(Minion.Distance(Player.Instance.Position) > Player.Instance.Distance(sender.Position))
                 {
-                  Q.Cast(sender.ServerPosition + Minion.Distance(sender.ServerPosition));
+                  Q.Cast(sender.ServerPosition - 50);
                 }
 
             }
