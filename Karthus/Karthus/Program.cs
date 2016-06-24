@@ -203,7 +203,7 @@ namespace Karthus
                 
 
                 {
-                  Q.Cast(sender.ServerPosition - - new Vector2(0, 0));
+                  Q.Cast(sender.ServerPosition - new Vector2(0, 0));
                 }
 
             }
