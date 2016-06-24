@@ -187,20 +187,20 @@ namespace Karthus
         
         private static void Obj_AI_Base_OnBasicAttack(Obj_AI_Base Sender, GameObjectProcessSpellCastEventArgs args)
         {
-            if (Sender == null || !Orbwalker.ActiveModesFlags.HasFlag(Orbwalker.ActiveModes.LastHit))
+            if (Sender == null)
             {
                return;
             }
-            if (!Sender.IsDashing() && Sender.Type == GameObjectType.AIHeroClient && Sender.IsValidTarget(Q.Range) && Q.IsReady() && Sender.IsEnemy)
+            CurrentTarget = TargetSelector.GetTarget(SpellManager.Q.Range, DamageType.Magical);
+            var Minions = EntityManager.MinionsAndMonsters.GetLaneMinions(EntityManager.UnitTeam.Both,sender.ServerPosition, 60);
+            foreach (var Minion in Minions)
+            if ((sender == CurrentTarget && !Sender.IsDashing() && Sender.Type == GameObjectType.AIHeroClient && Sender.IsValidTarget(Q.Range) && Q.IsReady() && Sender.IsEnemy)
             {
-                if (ObjectManager.Player.Position.Distance(qTarget.ServerPosition) <= 800)
+
                 {
-                    Q.Cast(Sender.ServerPosition + 75);
+                    Q.Cast(Sender.ServerPosition - Minion.Distance(sender.Position));
                 }
-                if (ObjectManager.Player.Position.Distance(qTarget.ServerPosition) > 800)
-                {
-                    Q.Cast(Player.Instance.Position.Extend(qTarget.ServerPosition, 875).To3D());
-                }
+
             } 
         }
 
