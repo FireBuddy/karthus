@@ -72,7 +72,6 @@ namespace Karthus
 
         private static bool nowE = false;
 
-
         public static void Execute()
         {
             if (player.ChampionName != "Karthus")
@@ -85,7 +84,6 @@ namespace Karthus
             W = new Spell.Skillshot(SpellSlot.W, 875, SkillShotType.Circular, 500, int.MaxValue, 70);
             E = new Spell.Active(SpellSlot.E, 510);
             R = new Spell.Skillshot(SpellSlot.R, 25000, SkillShotType.Circular, 3000, int.MaxValue, int.MaxValue);
-
 
             menuIni = MainMenu.AddMenu("Karthus", "Karthus");
             menuIni.AddGroupLabel("Welcome to the Worst Karthus addon!");
@@ -177,34 +175,12 @@ namespace Karthus
             DrawMenu.Add("Rtarget", new CheckBox("Draw R Target"));
             DrawMenu.Add("Track", new CheckBox("Track Enemies Health"));
 
-            Game.OnTick += Zigzag;
+            Game.OnUpdate += Zigzag;
             Game.OnUpdate += OnUpdate;
             Drawing.OnDraw += OnDraw;
             Gapcloser.OnGapcloser += Gapcloser_OnGap;
-            Obj_AI_Base.OnBasicAttack += Obj_AI_Base_OnBasicAttack;
-        }
-        
-        
-        private static void Obj_AI_Base_OnBasicAttack(Obj_AI_Base Sender, GameObjectProcessSpellCastEventArgs args)
-        {
-            if (Sender == null || !Orbwalker.ActiveModesFlags.HasFlag(Orbwalker.ActiveModes.LastHit))
-            {
-               return;
-            }
-            if (!Sender.IsDashing() && Sender.Type == GameObjectType.AIHeroClient && Sender.IsValidTarget(Q.Range) && Q.IsReady() && Sender.IsEnemy)
-            {
-                if (ObjectManager.Player.Position.Distance(qTarget.ServerPosition) <= 800)
-                {
-                    Q.Cast(Sender.ServerPosition + 75);
-                }
-                if (ObjectManager.Player.Position.Distance(qTarget.ServerPosition) > 800)
-                {
-                    Q.Cast(Player.Instance.Position.Extend(qTarget.ServerPosition, 875).To3D());
-                }
-            } 
         }
 
- 
         private static void Gapcloser_OnGap(AIHeroClient Sender, Gapcloser.GapcloserEventArgs args)
         {
             if (!menuIni.Get<CheckBox>("Misc").CurrentValue || !MiscMenu.Get<CheckBox>("gapcloser").CurrentValue
@@ -221,12 +197,6 @@ namespace Karthus
                     W.Cast(predw.CastPosition);
                 }
             }
-            if (Sender.IsValidTarget(Q.Range) && Q.IsReady() && !Sender.IsAlly && !Sender.IsMe)
-            {
-                {
-                    Q.Cast(Sender);
-                }
-            } 
         }
 
         private static void Ping(Vector2 position)
@@ -736,23 +706,22 @@ namespace Karthus
                     {
                         return false;
                     }
+
                     var predQ = Q2.GetPrediction(qTarget);
                     if (!cz && predQ.HitChance >= HitChance.High)
                     {
-
-                        if (ObjectManager.Player.Position.Distance(qTarget.ServerPosition) <= 750)   
-                            {
-                                    Q.Cast(predQ.CastPosition + 75);
-                            }
-                        if (ObjectManager.Player.Position.Distance(qTarget.ServerPosition) > 750)   
-                            {
-                                    Q.Cast(Player.Instance.Position.Extend(qTarget.ServerPosition, 874).To3D());
-                            }
-                        
+                        Q.Cast(predQ.CastPosition + 100);
+                        Q.Cast(predQ.CastPosition + 75);
+                        Q.Cast(predQ.CastPosition + 50);
+                        Q.Cast(predQ.CastPosition + 35);
+                     
                     }
                     else
                     {
+                        Q.Cast(qTarget.ServerPosition + 100);
+                        Q.Cast(qTarget.ServerPosition + 75);
                         Q.Cast(qTarget.ServerPosition + 50);
+                        Q.Cast(qTarget.ServerPosition + 35);
                     }
                 }
             }
@@ -778,7 +747,7 @@ namespace Karthus
                         Q.Width,
                         Q.Range);
 
-                if (location.MinionsHit > 0)
+                if (location.MinionsHit <= 1)
                 {
                     Q.Cast(location.Position.To3D());
                 }
@@ -786,8 +755,7 @@ namespace Karthus
         }
 
         private static void LaneClear()
-        { 
-
+        {
             LastHit();
             var canQ = LaneMenu.Get<CheckBox>("FUse_Q").CurrentValue && Q.IsReady();
             if (canQ && Q.IsReady() && player.ManaPercent >= LaneMenu.Get<Slider>("FQPercent").CurrentValue)
@@ -812,8 +780,7 @@ namespace Karthus
             }
         }
 
-
-       private static void LastHit()
+        private static void LastHit()
         {
             var canQ = LaneMenu.Get<CheckBox>("LUse_Q").CurrentValue && Q.IsReady();
             if (canQ && player.ManaPercent >= LaneMenu.Get<Slider>("LHQPercent").CurrentValue)
@@ -828,11 +795,11 @@ namespace Karthus
                     GetBestCircularFarmLocation(
                         EntityManager.MinionsAndMonsters.EnemyMinions.Where(
                             x =>
-                            x.Distance(Player.Instance) <= Q.Range && Orbwalker.LastTarget.NetworkId != x.NetworkId && x.Health > 5 && !x.IsDead && x.IsValid
-                            && Prediction.Health.GetPrediction(x, (int)(Q.CastDelay = 1000)) < (0.93 * player.GetSpellDamage(x, SpellSlot.Q)))
+                            x.Distance(Player.Instance) <= Q.Range && x.Health > 5 && !x.IsDead && x.IsValid
+                            && (Prediction.Health.GetPrediction(x, (int)(Q.CastDelay * 1000)) < player.GetSpellDamage(x, SpellSlot.Q)))
                             .Select(xm => xm.ServerPosition.To2D())
                             .ToList(),
-                        Q.Width + 100,
+                        Q.Width,
                         Q.Range);
 
                 if (Q.IsReady() && location.MinionsHit > 0)
@@ -840,58 +807,6 @@ namespace Karthus
                     Q.Cast(location.Position.To3D());
                 }
             }
-            if (HarassMenu.Get<CheckBox>("HUse_E").CurrentValue && HarassMenu.Get<CheckBox>("E_LastHit").CurrentValue && E.IsReady()
-            && !player.IsZombie)
-                {
-                    if (!E.IsReady() || player.IsZombie)
-                    {
-                        return;
-                    }
-
-                    nowE = false;
-                    var minions =
-                        new List<Obj_AI_Base>(
-                            EntityManager.MinionsAndMonsters.GetLaneMinions(EntityManager.UnitTeam.Enemy, Player.Instance.Position, E.Range).ToArray());
-                    minions.RemoveAll(x => x.Health <= 5);
-                    minions.RemoveAll(x => player.Distance(x.ServerPosition) > E.Range || x.Health > player.GetSpellDamage(eTarget, SpellSlot.E));
-                    var jgm = minions.Any(x => x.Team == GameObjectTeam.Neutral);
-
-                    if ((player.Spellbook.GetSpell(SpellSlot.E).ToggleState == 1 && (minions.Count >= 1 || jgm))
-                        && (player.ManaPercent >= HarassMenu.Get<Slider>("HEPercent").CurrentValue))
-                    {
-                        E.Cast();
-                    }
-                    else if ((player.Spellbook.GetSpell(SpellSlot.E).ToggleState == 2 && (minions.Count == 0 && !jgm))
-                             || !(player.ManaPercent >= HarassMenu.Get<Slider>("HEPercent").CurrentValue))
-                    {
-                        calcE(true);
-                    }
-                }
-
-            //if (canQ && player.ManaPercent >= LaneMenu.Get<Slider>("FQPercent").CurrentValue)
-            //{
-                //var minions1 = EntityManager.MinionsAndMonsters.EnemyMinions;
-                //if (minions1 == null || !minions1.Any())
-               // {
-                  //  return;
-                //}
-
-                //var location =
-  //                  GetBestCircularFarmLocation(
- //                       EntityManager.MinionsAndMonsters.EnemyMinions.Where(
-  //                          x =>
-   //                         x.Distance(Player.Instance) <= Q.Range && x.Health > 5 && !x.IsDead && x.IsValid
-   //                         && (Prediction.Health.GetPrediction(x, (int)(Q.CastDelay = 1000)) < 0.7 * player.GetSpellDamage(x, SpellSlot.Q)))
-   //                         .Select(xm => xm.ServerPosition.To2D())
-   //                         .ToList(),
-  //                      Q.Width,
-   //                     Q.Range);
-//
-   //             if (Q.IsReady() && location.MinionsHit > 0)
-    //            {
-   //                 Q.Cast(location.Position.To3D());
-  //              }
-   //         }
         }
 
         private static void Ult()
