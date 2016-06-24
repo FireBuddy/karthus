@@ -203,8 +203,8 @@ namespace Karthus
                 
                 Q.SourcePosition = Minion.ServerPosition;
                 {
-                  var RPos = new Vector2(Minion.ServerPosition.X,  Minion.ServerPosition.Y);  
-                  Q.Cast(RPos.Position);
+                  var RPos = new Vector3(Minion.ServerPosition.X,  Minion.ServerPosition.Y, Minion.ServerPosition.Z);  
+                  Q.Cast();
                 }
 
             }
