@@ -577,7 +577,7 @@ namespace Karthus
                     var predQ = Q2.GetPrediction(qTarget);
                     if (HarassMenu.Get<CheckBox>("HUse_Q").CurrentValue && Q.IsReady())
                     {
-                        var tower = EntityManager.Turrets.AllTurrets.FirstOrDefault(t => t.IsInRange(qTarget.ServerPosition, 50));
+                        
                         var Minions = EntityManager.MinionsAndMonsters.GetLaneMinions(EntityManager.UnitTeam.Both,qTarget.ServerPosition, 50);
                         foreach (var Minion in Minions)
                         {
@@ -586,10 +586,11 @@ namespace Karthus
                         var RPos = new Vector3(qTarget.ServerPosition.X + RDPos , qTarget.ServerPosition.Y + RDPos2, qTarget.ServerPosition.Z);  
                         Q.Cast(RPos);
                         }
-                        foreach(var t in tower)
+                        var tower = EntityManager.Turrets.AllTurrets.FirstOrDefault(t => t.IsInRange(qTarget.ServerPosition, 50));
+                        if(tower != null)
                         {
-                        var RDPos = qTarget.ServerPosition.X - t.ServerPosition.X;
-                        var RDPos2 = qTarget.ServerPosition.Y - t.ServerPosition.Y;
+                        var RDPos = qTarget.ServerPosition.X - tower.ServerPosition.X;
+                        var RDPos2 = qTarget.ServerPosition.Y - tower.ServerPosition.Y;
                         var RPos = new Vector3(qTarget.ServerPosition.X + RDPos , qTarget.ServerPosition.Y + RDPos2, qTarget.ServerPosition.Z);  
                         Q.Cast(RPos);
                         }
