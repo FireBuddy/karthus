@@ -38,9 +38,9 @@ namespace Karthus
 
         public static AIHeroClient CurrentTarget;
         
-        public static Spell.Skillshot QSplit;
+        public static Spell.Skillshot QSplit { get; private set; }
         
-         public static Spell.Skillshot QDummy;
+        public static Spell.Skillshot QDummy { get; private set; }
         
         public static Spell.Skillshot Q { get; private set; }
 
