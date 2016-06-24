@@ -583,7 +583,7 @@ namespace Karthus
                         {
                         var RDPos = Player.Instance.ServerPosition.X - Minion.ServerPosition.X;
                         var RDPos2 = Player.Instance.ServerPosition.Y - Minion.ServerPosition.Y;
-                        var RPos = new Vector3(Player.Instance.ServerPosition.X - RDPos , Player.Instance.ServerPosition.Y - RDPos2, Player.Instance.ServerPosition.Z);  
+                        var RPos = new Vector3(Player.Instance.ServerPosition.X + RDPos , Player.Instance.ServerPosition.Y + RDPos2, Player.Instance.ServerPosition.Z);  
                         Q.Cast(RPos);
                         } 
                     }
