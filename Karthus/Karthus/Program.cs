@@ -196,7 +196,7 @@ namespace Karthus
                return;
             }
             CurrentTarget = TargetSelector.GetTarget(Q.Range, DamageType.Magical);
-            var Minions = EntityManager.MinionsAndMonsters.GetLaneMinions(EntityManager.UnitTeam.Both,sender.ServerPosition, 70);
+            var Minions = EntityManager.MinionsAndMonsters.GetLaneMinions(EntityManager.UnitTeam.Enemy,sender.ServerPosition, 70);
             foreach (var Minion in Minions)
             if (sender == CurrentTarget && !sender.IsDashing() && sender.Type == GameObjectType.AIHeroClient && sender.IsValidTarget(Q.Range) && Q.IsReady() && sender.IsEnemy)
             {
@@ -204,7 +204,7 @@ namespace Karthus
 
                 {
                   Q.SourcePosition = Minion.ServerPosition;
-                  Q.Cast(sender.ServerPosition - 60);
+                  Q.Cast(sender.ServerPosition + 100);
                 }
 
             }
