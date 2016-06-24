@@ -204,7 +204,7 @@ namespace Karthus
 
                 {
                   Q.SourcePosition = Minion.ServerPosition;
-                  Q.Cast(sender.ServerPosition - 60;
+                  Q.Cast(sender.ServerPosition - 60);
                 }
 
             }
