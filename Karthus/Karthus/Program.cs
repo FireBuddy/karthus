@@ -586,6 +586,14 @@ namespace Karthus
                         var RPos = new Vector3(qTarget.ServerPosition.X + RDPos , qTarget.ServerPosition.Y + RDPos2, qTarget.ServerPosition.Z);  
                         Q.Cast(RPos);
                         }
+                        foreach(var t in tower)
+                        {
+                        var RDPos = qTarget.ServerPosition.X - t.ServerPosition.X;
+                        var RDPos2 = qTarget.ServerPosition.Y - t.ServerPosition.Y;
+                        var RPos = new Vector3(qTarget.ServerPosition.X + RDPos , qTarget.ServerPosition.Y + RDPos2, qTarget.ServerPosition.Z);  
+                        Q.Cast(RPos);
+                        }
+                        
                     }
                 }
 
