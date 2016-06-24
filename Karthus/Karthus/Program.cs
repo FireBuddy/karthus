@@ -350,13 +350,11 @@ namespace Karthus
                     && player.Mana - (SaveR() / 3) > R.Handle.SData.Mana)
                 {
                     JungleClear();
-                    Harass();
                 }
 
                 if (!MiscMenu.Get<CheckBox>("SaveR").CurrentValue || player.Level < 6 && !R.IsLearned)
                 {
                     JungleClear();
-                    Harass();
                 }
             }
 
@@ -575,7 +573,7 @@ namespace Karthus
         private static void Harass()
         {
             {
-                if(qTarget == null)
+               
                 {
                     var predQ = Q2.GetPrediction(qTarget);
                     if (HarassMenu.Get<CheckBox>("HUse_Q").CurrentValue && Q.IsReady())
