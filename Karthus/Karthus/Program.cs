@@ -199,11 +199,11 @@ namespace Karthus
             if (sender == CurrentTarget && !sender.IsDashing() && sender.Type == GameObjectType.AIHeroClient && sender.IsValidTarget(Q.Range) && Q.IsReady() && sender.IsEnemy)
             {
                 
-                if (Minion.Distance(Player.Instance.Position) < Minion.Distance(sender.Position))
+                if (Minion.Distance(Player.Instance.Position) < Player.Distance(sender.Position))
                 {
                   Q.Cast(sender.ServerPosition - Minion.Distance(sender.ServerPosition));
                 }
-                else if(Minion.Distance(Player.Instance.Position) > Minion.Distance(sender.Position))
+                else if(Minion.Distance(Player.Instance.Position) > Player.Distance(sender.Position))
                 {
                   Q.Cast(sender.ServerPosition + Minion.Distance(sender.ServerPosition));
                 }
