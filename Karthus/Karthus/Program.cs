@@ -573,10 +573,10 @@ namespace Karthus
         private static void Harass()
         {
             {
-                if (qTarget != null)
+
                 {
                     var predQ = Q2.GetPrediction(qTarget);
-                    if (HarassMenu.Get<CheckBox>("HUse_Q").CurrentValue && (Q.IsReady() && qTarget.IsValidTarget(Q.Range)))
+                    if (HarassMenu.Get<CheckBox>("HUse_Q").CurrentValue && Q.IsReady())
                     {
                         var Minions = EntityManager.MinionsAndMonsters.GetLaneMinions(EntityManager.UnitTeam.Both,Player.Instance.ServerPosition, 500);
                         foreach (var Minion in Minions)
