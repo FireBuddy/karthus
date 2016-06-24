@@ -200,7 +200,7 @@ namespace Karthus
             {
                 
                 {
-                  Q.Cast(sender.ServerPosition - Minion.Distance(sender.Position));
+                  Q.Cast(sender.ServerPosition - Minion.Distance(sender.ServerPosition));
                 }
 
             }
