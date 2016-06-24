@@ -581,8 +581,9 @@ namespace Karthus
                     {
                         var Minions = EntityManager.MinionsAndMonsters.GetLaneMinions(EntityManager.UnitTeam.Both,qTarget.ServerPosition, 60);
                         foreach (var Minion in Minions)
-                        Q.SourcePosition = Minion.ServerPosition;
+                        if (Minion != null)
                         {
+                            Q.SourcePosition = Minion.ServerPosition;
                             Q.Cast(qTarget.ServerPosition - 60);
                         } 
                     }
