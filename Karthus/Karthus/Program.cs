@@ -576,7 +576,7 @@ namespace Karthus
                     var predQ = Q2.GetPrediction(qTarget);
                     if (HarassMenu.Get<CheckBox>("HUse_Q").CurrentValue && (Q.IsReady() && qTarget.IsValidTarget(Q.Range)))
                     {
-                        var Minions = EntityManager.MinionsAndMonsters.GetLaneMinions(EntityManager.UnitTeam.Both,qTarget.ServerPosition, 70);
+                        var Minions = EntityManager.MinionsAndMonsters.GetLaneMinions(EntityManager.UnitTeam.Both,qTarget.ServerPosition, 200);
                         foreach (var Minion in Minions)
                         if (!cz && predQ.HitChance >= HitChance.High)
                         {
