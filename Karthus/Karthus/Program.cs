@@ -581,8 +581,8 @@ namespace Karthus
                         var Minions = EntityManager.MinionsAndMonsters.GetLaneMinions(EntityManager.UnitTeam.Both,Player.Instance.ServerPosition, 500);
                         foreach (var Minion in Minions)
                         {
-                        
-                        var RPos = new Vector3(Player.Instance.ServerPosition.X - (Player.Instance.ServerPosition.X - Minion.ServerPosition.X)) , Player.Instance.ServerPosition.Y, Player.Instance.ServerPosition.Z);  
+                        var RDPos = int(Player.Instance.ServerPosition.X - Minion.ServerPosition.X)
+                        var RPos = new Vector3(Player.Instance.ServerPosition.X , Player.Instance.ServerPosition.Y, Player.Instance.ServerPosition.Z);  
                         Q.Cast(RPos);
                         } 
                     }
