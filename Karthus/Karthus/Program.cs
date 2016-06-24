@@ -18,7 +18,7 @@ namespace Karthus
     using Color = Color;
     using RectangleF = RectangleF;
 
-    internal class Program
+    internal class ProgramF 
     {
         private static Vector2 PingLocation;
 
@@ -583,7 +583,7 @@ namespace Karthus
                         if (Minion != null)
                         {
                         
-                        var RPos = new Vector3(qTarget.ServerPosition.X - 300 ,  qTarget.ServerPosition.Y, qTarget.ServerPosition.Z);  
+                        var RPos = new Vector3(qTarget.ServerPosition.X,  qTarget.ServerPosition.Y, qTarget.ServerPosition.Z - 300);  
                         Q.Cast(RPos);
                         } 
                     }
