@@ -350,11 +350,13 @@ namespace Karthus
                     && player.Mana - (SaveR() / 3) > R.Handle.SData.Mana)
                 {
                     JungleClear();
+                    Harass();
                 }
 
                 if (!MiscMenu.Get<CheckBox>("SaveR").CurrentValue || player.Level < 6 && !R.IsLearned)
                 {
                     JungleClear();
+                    Harass();
                 }
             }
 
