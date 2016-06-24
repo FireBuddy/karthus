@@ -201,10 +201,9 @@ namespace Karthus
             if (Minion != null && sender == CurrentTarget && !sender.IsDashing() && sender.Type == GameObjectType.AIHeroClient && sender.IsValidTarget(Q.Range) && Q.IsReady() && sender.IsEnemy)
             {
                 
-                Q.SourcePosition = Minion.ServerPosition;
+                
                 {
-                  var RPos = new Vector3(Minion.ServerPosition.X,  Minion.ServerPosition.Y, Minion.ServerPosition.Z);  
-                  Q.Cast(RPos);
+
                 }
 
             }
@@ -583,8 +582,9 @@ namespace Karthus
                         foreach (var Minion in Minions)
                         if (Minion != null)
                         {
-                            Q.SourcePosition = Minion.ServerPosition;
-                            Q.Cast(qTarget.ServerPosition + 100);
+                        
+                        var RPos = new Vector3(qTarget.ServerPosition.X - Minion.ServerPosition.X ,  qTarget.ServerPosition.Y, qTarget.ServerPosition.Z);  
+                        Q.Cast(RPos);
                         } 
                     }
                 }
