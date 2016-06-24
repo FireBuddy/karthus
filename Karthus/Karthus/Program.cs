@@ -573,7 +573,7 @@ namespace Karthus
         private static void Harass()
         {
             {
-
+                if(qTarget == null)
                 {
                     var predQ = Q2.GetPrediction(qTarget);
                     if (HarassMenu.Get<CheckBox>("HUse_Q").CurrentValue && Q.IsReady())
