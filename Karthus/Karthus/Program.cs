@@ -36,6 +36,8 @@ namespace Karthus
 
         private static readonly AIHeroClient player = ObjectManager.Player;
 
+        public static AIHeroClient CurrentTarget;
+        
         public static Spell.Skillshot Q { get; private set; }
 
         public static Spell.Skillshot Q2 { get; private set; }
