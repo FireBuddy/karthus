@@ -193,14 +193,14 @@ namespace Karthus
             {
                return;
             }
-            CurrentTarget = TargetSelector.GetTarget(SpellManager.Q.Range, DamageType.Magical);
+            CurrentTarget = TargetSelector.GetTarget(Q.Range, DamageType.Magical);
             var Minions = EntityManager.MinionsAndMonsters.GetLaneMinions(EntityManager.UnitTeam.Both,sender.ServerPosition, 60);
             foreach (var Minion in Minions)
-            if (sender == CurrentTarget && !sender.IsDashing() && sender.Type == GameObjectType.AIHeroClient && sender.IsValidTarget(SpellManager.Q.Range) && SpellManager.Q.IsReady() && sender.IsEnemy)
+            if (sender == CurrentTarget && !sender.IsDashing() && sender.Type == GameObjectType.AIHeroClient && sender.IsValidTarget(Q.Range) && Q.IsReady() && sender.IsEnemy)
             {
                 
                 {
-                  SpellManager.Q.Cast(sender.ServerPosition - Minion.Distance(sender.Position));
+                  Q.Cast(sender.ServerPosition - Minion.Distance(sender.Position));
                 }
 
             }
