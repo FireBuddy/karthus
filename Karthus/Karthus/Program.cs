@@ -196,7 +196,7 @@ namespace Karthus
                return;
             }
             CurrentTarget = TargetSelector.GetTarget(Q.Range, DamageType.Magical);
-            if (sender == CurrentTarget && !sender.IsDashing() && sender.Type == GameObjectType.AIHeroClient && sender.IsValidTarget(SpellManager.Q.Range) && SpellManager.Q.IsReady() && sender.IsEnemy)
+            if (!sender.IsFacing(Player.Instance) && sender == CurrentTarget && !sender.IsDashing() && sender.Type == GameObjectType.AIHeroClient && sender.IsValidTarget(SpellManager.Q.Range) && Q.IsReady() && sender.IsEnemy)
             {
                 
                 {
