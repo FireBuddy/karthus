@@ -585,7 +585,7 @@ namespace Karthus
                         var RDPos = qTarget.ServerPosition.X - Minion.ServerPosition.X;
                         var RDPos2 = qTarget.ServerPosition.Y - Minion.ServerPosition.Y;
                         var RPos = new Vector3(qTarget.ServerPosition.X + RDPos , qTarget.ServerPosition.Y + RDPos2, qTarget.ServerPosition.Z);  
-                        if (RPos.Distance(predQ.CastPosition) < 50)
+                        if (RPos.Distance(predQ.CastPosition) < 100)
                         {
                             Q.Cast(RPos);
                         }
