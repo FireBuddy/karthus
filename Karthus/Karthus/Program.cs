@@ -186,7 +186,25 @@ namespace Karthus
             Drawing.OnDraw += OnDraw;
             Gapcloser.OnGapcloser += Gapcloser_OnGap;
             Obj_AI_Base.OnBasicAttack += Obj_AI_Base_OnBasicAttack;
-        }
+            Obj_AI_Base.OnProcessSpellCast += Obj_AI_Base_OnProcessSpellCast2;
+            }
+        
+        private static void Obj_AI_Base_OnProcessSpellCast2(Obj_AI_Base sender, GameObjectProcessSpellCastEventArgs args)
+        {
+            if (sender == null || !Orbwalker.ActiveModesFlags.HasFlag(Orbwalker.ActiveModes.Harass))
+            {
+               return;
+            }
+            CurrentTarget = TargetSelector.GetTarget(Q.Range, DamageType.Magical);
+            if (sender == CurrentTarget && !sender.IsDashing() && sender.Type == GameObjectType.AIHeroClient && sender.IsValidTarget(SpellManager.Q.Range) && SpellManager.Q.IsReady() && sender.IsEnemy)
+            {
+                
+                {
+                    Q.Cast(sender.ServerPosition + 20);
+                }
+
+            } 
+        }    
         
         
         private static void Obj_AI_Base_OnBasicAttack(Obj_AI_Base sender, GameObjectProcessSpellCastEventArgs args)
