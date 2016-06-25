@@ -202,7 +202,7 @@ namespace Karthus
                 
                 
                 {
-                 Q.Cast(qTarget.ServerPosition + 20);
+                 
                 }
 
             }
