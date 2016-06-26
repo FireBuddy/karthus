@@ -812,7 +812,7 @@ namespace Karthus
             return true;
         }
 
-        private static void JungleClearr()
+        private static void JungleClear()
         {
             var canQ = LaneMenu.Get<CheckBox>("JUse_Q").CurrentValue && Q.IsReady();
             if (canQ && Q.IsReady() && player.ManaPercent >= LaneMenu.Get<Slider>("JQPercent").CurrentValue)
@@ -826,7 +826,7 @@ namespace Karthus
                     GetBestCircularFarmLocation(
                         EntityManager.MinionsAndMonsters.GetJungleMonsters()
                             .Where(x => x.Distance(Player.Instance) <= Q.Range)
-                            .Select(Q.GetPrediction(xm); xm => xm.ServerPosition.To2D())
+                            .Select(Q.GetPrediction(xm); xm => xm.CastPosition.To2D())
                             .ToList(),
                         Q.Width,
                         Q.Range);
