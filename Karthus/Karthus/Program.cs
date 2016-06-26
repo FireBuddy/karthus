@@ -904,7 +904,7 @@ namespace Karthus
                     var Positions = RotatedPositions(locationtwo.Position.To3D(), Game.CursorPos, 360, 30, 100);
                     foreach ( var rotatedPosition in Positions)
                     {
-                        var Minions = EntityManager.MinionsAndMonsters.GetLaneMinions(EntityManager.UnitTeam.Both,rotatedPosition, 100).Count();
+                        var Minions = EntityManager.MinionsAndMonsters.GetLaneMinions(EntityManager.UnitTeam.Both,rotatedPosition, 110).Count();
                         {
                            if (Minions > 1) return; 
                            Q.Cast(rotatedPosition);
