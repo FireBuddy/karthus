@@ -903,7 +903,7 @@ namespace Karthus
                 {
                     var Zero = new Vector3(locationtwo.Position.To3D().X + 100, locationtwo.Position.To3D().Y, locationtwo.Position.To3D().Z);
                     {
-                        var Minions = EntityManager.MinionsAndMonsters.GetLaneMinions(EntityManager.UnitTeam.Both,Zero, 110).Count();
+                        var Minions = EntityManager.MinionsAndMonsters.GetLaneMinions(EntityManager.UnitTeam.Both,Zero, 120).Count();
                         {
                            if (Minions < 2) Q.Cast(Zero); 
                            
@@ -915,7 +915,7 @@ namespace Karthus
                 {
                     var Nine = new Vector3(locationtwo.Position.To3D().X, locationtwo.Position.To3D().Y + 100, locationtwo.Position.To3D().Z);
                     {
-                        var Minions = EntityManager.MinionsAndMonsters.GetLaneMinions(EntityManager.UnitTeam.Both,Nine, 110).Count();
+                        var Minions = EntityManager.MinionsAndMonsters.GetLaneMinions(EntityManager.UnitTeam.Both,Nine, 120).Count();
                         {
                            if (Minions < 2) Q.Cast(Nine); 
                            
@@ -927,7 +927,7 @@ namespace Karthus
                 {
                     var OneEight = new Vector3(locationtwo.Position.To3D().X - 100, locationtwo.Position.To3D().Y, locationtwo.Position.To3D().Z);
                     {
-                        var Minions = EntityManager.MinionsAndMonsters.GetLaneMinions(EntityManager.UnitTeam.Both,OneEight, 110).Count();
+                        var Minions = EntityManager.MinionsAndMonsters.GetLaneMinions(EntityManager.UnitTeam.Both,OneEight, 120).Count();
                         {
                            if (Minions < 2) Q.Cast(OneEight);
                            
@@ -939,7 +939,7 @@ namespace Karthus
                 {
                     var TwoSeven = new Vector3(locationtwo.Position.To3D().X, locationtwo.Position.To3D().Y - 100, locationtwo.Position.To3D().Z);
                     {
-                        var Minions = EntityManager.MinionsAndMonsters.GetLaneMinions(EntityManager.UnitTeam.Both,TwoSeven, 110).Count();
+                        var Minions = EntityManager.MinionsAndMonsters.GetLaneMinions(EntityManager.UnitTeam.Both,TwoSeven, 120).Count();
                         {
                            if (Minions < 2) Q.Cast(TwoSeven); 
                            
