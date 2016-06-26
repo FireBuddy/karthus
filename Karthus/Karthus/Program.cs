@@ -902,7 +902,7 @@ namespace Karthus
                 if (Q.IsReady() && locationtwo.MinionsHit > 0)
                 {
                     {
-                        var posList = new List<Vector3>();
+
                        
                         var Minions = EntityManager.MinionsAndMonsters.GetLaneMinions(EntityManager.UnitTeam.Both,locationtwo, 110).Count();
                         {
