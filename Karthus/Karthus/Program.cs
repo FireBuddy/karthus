@@ -888,8 +888,18 @@ namespace Karthus
                             .ToList(),
                         Q.Width + 100,
                         Q.Range);
+                var locationtwo =
+                    GetBestCircularFarmLocation(
+                        EntityManager.MinionsAndMonsters.EnemyMinions.Where(
+                            x =>
+                            x.Distance(Player.Instance) <= Q.Range && x.Health > 5 && !x.IsDead && x.IsValid
+                            && Prediction.Health.GetPrediction(x, (int)(Q.CastDelay = 1000)) < (1.98 * player.GetSpellDamage(x, SpellSlot.Q)))
+                            .Select(xm => xm.ServerPosition.To2D())
+                            .ToList(),
+                        Q.Width + 100,
+                        Q.Range);
 
-                if (Q.IsReady() && location.MinionsHit > 0)
+                if (Q.IsReady() && locationtwo.MinionsHit > 0)
                 {
                     var Positions = RotatedPositions(location.Position.To3D(), Game.CursorPos, 360, 30, 80);
                     foreach ( var rotatedPosition in Positions)
@@ -900,6 +910,13 @@ namespace Karthus
                            Q.Cast(rotatedPosition);
                         }
                         
+                    }
+                }
+                if (Q.IsReady() && location.MinionsHit > 0)
+                {
+
+                    {
+                        Q.Cast(location.Position.To3D())
                     }
                 }
             }
