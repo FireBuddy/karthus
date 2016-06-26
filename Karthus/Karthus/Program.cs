@@ -834,18 +834,11 @@ namespace Karthus
                 if (location.MinionsHit <= 1)
                 {
                     Q.Cast(location.Position.To3D());
+                    Q.JungleClear();
                 }
             }
         }
 
-        protected override void JungleClear()
-        {
-            if (MyHero.ManaPercent >= 50)
-            {
-
-            }
-            base.JungleClear();
-        }
         private static void LaneClear()
         { 
 
