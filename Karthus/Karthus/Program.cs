@@ -896,7 +896,8 @@ namespace Karthus
                     {
                         var Minions = EntityManager.MinionsAndMonsters.GetLaneMinions(EntityManager.UnitTeam.Both,rotatedPosition, 50).Count();
                         {
-                            
+                           if (Minions > 1) return; 
+                           Q.Cast(Minions);
                         }
                         
                     }
