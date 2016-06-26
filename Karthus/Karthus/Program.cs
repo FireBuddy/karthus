@@ -916,7 +916,7 @@ namespace Karthus
                 {
 
                     {
-                        Q.Cast(location.Position.To3D())
+                        Q.Cast(location.Position.To3D());
                     }
                 }
             }
