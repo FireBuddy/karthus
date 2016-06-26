@@ -892,7 +892,7 @@ namespace Karthus
                 if (Q.IsReady() && location.MinionsHit > 0)
                 {
                     var Positions = RotatedPositions(location.Position.To3D(), Game.CursorPos, 360, 72, 60);
-                    foreach (rotatedPosition in Positions)
+                    foreach ( var rotatedPosition in Positions)
                     {
                     
                         
