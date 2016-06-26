@@ -870,7 +870,7 @@ namespace Karthus
 
        private static void LastHit()
         {
-            var canE = RotatedPositions(Player.Instance.ServerPosition, Player.Instance.ServerPosition - 1, 360, 72, 5);
+            
             var canQ = LaneMenu.Get<CheckBox>("LUse_Q").CurrentValue && Q.IsReady();
             if (canQ && player.ManaPercent >= LaneMenu.Get<Slider>("LHQPercent").CurrentValue)
             {
