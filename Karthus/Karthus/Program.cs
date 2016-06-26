@@ -901,9 +901,9 @@ namespace Karthus
 
                 if (Q.IsReady() && locationtwo.MinionsHit > 0)
                 {
-                    var Zero = new Vector3(locationtwo.Position.To3D().X + 100, locationtwo.Position.To3D().Y, locationtwo.Position.To3D().Z);
+                    var Zero = new Vector3(locationtwo.Position.To3D().X + 120, locationtwo.Position.To3D().Y, locationtwo.Position.To3D().Z);
                     {
-                        var Minions = EntityManager.MinionsAndMonsters.GetLaneMinions(EntityManager.UnitTeam.Both,Zero, 120).Count();
+                        var Minions = EntityManager.MinionsAndMonsters.GetLaneMinions(EntityManager.UnitTeam.Both,Zero, 160).Count();
                         {
                            if (Minions < 2) Q.Cast(Zero); 
                            
@@ -913,9 +913,9 @@ namespace Karthus
                 }
                 if (Q.IsReady() && locationtwo.MinionsHit > 0)
                 {
-                    var Nine = new Vector3(locationtwo.Position.To3D().X, locationtwo.Position.To3D().Y + 100, locationtwo.Position.To3D().Z);
+                    var Nine = new Vector3(locationtwo.Position.To3D().X, locationtwo.Position.To3D().Y + 120, locationtwo.Position.To3D().Z);
                     {
-                        var Minions = EntityManager.MinionsAndMonsters.GetLaneMinions(EntityManager.UnitTeam.Both,Nine, 120).Count();
+                        var Minions = EntityManager.MinionsAndMonsters.GetLaneMinions(EntityManager.UnitTeam.Both,Nine, 160).Count();
                         {
                            if (Minions < 2) Q.Cast(Nine); 
                            
@@ -925,9 +925,9 @@ namespace Karthus
                 }
                 if (Q.IsReady() && locationtwo.MinionsHit > 0)
                 {
-                    var OneEight = new Vector3(locationtwo.Position.To3D().X - 100, locationtwo.Position.To3D().Y, locationtwo.Position.To3D().Z);
+                    var OneEight = new Vector3(locationtwo.Position.To3D().X - 120, locationtwo.Position.To3D().Y, locationtwo.Position.To3D().Z);
                     {
-                        var Minions = EntityManager.MinionsAndMonsters.GetLaneMinions(EntityManager.UnitTeam.Both,OneEight, 120).Count();
+                        var Minions = EntityManager.MinionsAndMonsters.GetLaneMinions(EntityManager.UnitTeam.Both,OneEight, 160).Count();
                         {
                            if (Minions < 2) Q.Cast(OneEight);
                            
@@ -937,9 +937,9 @@ namespace Karthus
                 }
                 if (Q.IsReady() && locationtwo.MinionsHit > 0)
                 {
-                    var TwoSeven = new Vector3(locationtwo.Position.To3D().X, locationtwo.Position.To3D().Y - 100, locationtwo.Position.To3D().Z);
+                    var TwoSeven = new Vector3(locationtwo.Position.To3D().X, locationtwo.Position.To3D().Y - 120, locationtwo.Position.To3D().Z);
                     {
-                        var Minions = EntityManager.MinionsAndMonsters.GetLaneMinions(EntityManager.UnitTeam.Both,TwoSeven, 120).Count();
+                        var Minions = EntityManager.MinionsAndMonsters.GetLaneMinions(EntityManager.UnitTeam.Both,TwoSeven, 160).Count();
                         {
                            if (Minions < 2) Q.Cast(TwoSeven); 
                            
