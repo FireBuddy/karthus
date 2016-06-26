@@ -920,33 +920,33 @@ namespace Karthus
                     }
                 }
             }
-            if (HarassMenu.Get<CheckBox>("HUse_E").CurrentValue && HarassMenu.Get<CheckBox>("E_LastHit").CurrentValue && E.IsReady()
-            && !player.IsZombie)
-                {
-                    if (!E.IsReady() || player.IsZombie)
-                    {
-                        return;
-                    }
-
-                    nowE = false;
-                    var minions =
-                        new List<Obj_AI_Base>(
-                            EntityManager.MinionsAndMonsters.GetLaneMinions(EntityManager.UnitTeam.Enemy, Player.Instance.Position, E.Range).ToArray());
-                    minions.RemoveAll(x => x.Health <= 5);
-                    minions.RemoveAll(x => player.Distance(x.ServerPosition) > E.Range || x.Health > player.GetSpellDamage(eTarget, SpellSlot.E));
-                    var jgm = minions.Any(x => x.Team == GameObjectTeam.Neutral);
-
-                    if ((player.Spellbook.GetSpell(SpellSlot.E).ToggleState == 1 && (minions.Count >= 1 || jgm))
-                        && (player.ManaPercent >= HarassMenu.Get<Slider>("HEPercent").CurrentValue))
-                    {
-                        E.Cast();
-                    }
-                    else if ((player.Spellbook.GetSpell(SpellSlot.E).ToggleState == 2 && (minions.Count == 0 && !jgm))
-                             || !(player.ManaPercent >= HarassMenu.Get<Slider>("HEPercent").CurrentValue))
-                    {
-                        calcE(true);
-                    }
-                }
+            //if (HarassMenu.Get<CheckBox>("HUse_E").CurrentValue && HarassMenu.Get<CheckBox>("E_LastHit").CurrentValue && E.IsReady()
+            //&& !player.IsZombie)
+             //   {
+               //     if (!E.IsReady() || player.IsZombie)
+                 //   {
+                 //       return;
+                 //   }
+//
+  //                  nowE = false;
+    //                var minions =
+      //                  new List<Obj_AI_Base>(
+        //                    EntityManager.MinionsAndMonsters.GetLaneMinions(EntityManager.UnitTeam.Enemy, Player.Instance.Position, E.Range).ToArray());
+      //              minions.RemoveAll(x => x.Health <= 5);
+        //            minions.RemoveAll(x => player.Distance(x.ServerPosition) > E.Range || x.Health > player.GetSpellDamage(eTarget, SpellSlot.E));
+          //          var jgm = minions.Any(x => x.Team == GameObjectTeam.Neutral);
+//
+  //                  if ((player.Spellbook.GetSpell(SpellSlot.E).ToggleState == 1 && (minions.Count >= 1 || jgm))
+    //                    && (player.ManaPercent >= HarassMenu.Get<Slider>("HEPercent").CurrentValue))
+      //              {
+        //                E.Cast();
+          //          }
+            //        else if ((player.Spellbook.GetSpell(SpellSlot.E).ToggleState == 2 && (minions.Count == 0 && !jgm))
+          //                   || !(player.ManaPercent >= HarassMenu.Get<Slider>("HEPercent").CurrentValue))
+        //            {
+            //            calcE(true);
+      //              }
+    //            }
 
             //if (canQ && player.ManaPercent >= LaneMenu.Get<Slider>("FQPercent").CurrentValue)
             //{
