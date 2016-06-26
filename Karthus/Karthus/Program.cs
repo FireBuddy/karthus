@@ -868,6 +868,7 @@ namespace Karthus
 
        private static void LastHit()
         {
+            var Positions = RotatedPositions(Player.Instance.ServerPosition, Game.CursorPos, 360, 72, 100);
             var canQ = LaneMenu.Get<CheckBox>("LUse_Q").CurrentValue && Q.IsReady();
             if (canQ && player.ManaPercent >= LaneMenu.Get<Slider>("LHQPercent").CurrentValue)
             {
@@ -890,7 +891,7 @@ namespace Karthus
 
                 if (Q.IsReady() && location.MinionsHit > 0)
                 {
-                    var Positions = RotatedPositions(Player.Instance.ServerPosition, Game.CursorPos, 360, 72, 100).ToList();
+                   
                     Q.Cast(location.Position.To3D());
                 }
             }
