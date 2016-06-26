@@ -882,12 +882,12 @@ namespace Karthus
                     GetBestCircularFarmLocation(
                         EntityManager.MinionsAndMonsters.EnemyMinions.Where(
                             x =>
-                            x.Distance(Player.Instance) <= Q.Range && x.Health > 5 && !x.IsDead && x.IsValid
+                            x.Distance(Player.Instance) <= Q.Range + 60 && x.Health > 5 && !x.IsDead && x.IsValid
                             && Prediction.Health.GetPrediction(x, (int)(Q.CastDelay = 1000)) < (0.93 * player.GetSpellDamage(x, SpellSlot.Q)))
                             .Select(xm => xm.ServerPosition.To2D())
                             .ToList(),
                         Q.Width,
-                        Q.Range);
+                        Q.Range + 60);
                 var locationtwo =
                     GetBestCircularFarmLocation(
                         EntityManager.MinionsAndMonsters.EnemyMinions.Where(
@@ -951,7 +951,7 @@ namespace Karthus
                 {
 
                     {
-                        Q.Cast(location.Position.To3D());
+                        Q.Cast(location.Position.To3D() - 60);
                     }
                 }
             }
