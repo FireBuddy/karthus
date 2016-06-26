@@ -838,6 +838,14 @@ namespace Karthus
             }
         }
 
+        protected override void JungleClear(Menu menu)
+        {
+            if (MyHero.ManaPercent >= 50)
+            {
+
+            }
+            base.JungleClear(menu);
+        }
         private static void LaneClear()
         { 
 
