@@ -75,22 +75,6 @@ namespace Karthus
         private static AIHeroClient eTarget;
 
         private static bool nowE = false;
-        
-        public static List<Vector3> RotatedPositions(Vector3 rotateAround, Vector3 rotateTowards, int degrees,
-        int positionAmount = 0, float distance = 0)
-        {
-            if (distance == 0) distance = rotateAround.Distance(rotateTowards);
-            if (positionAmount == 0) positionAmount = degrees / 10;
-            var direction = (rotateTowards - rotateAround).Normalized().To2D();
-            var posList = new List<Vector3>();
-            var step = degrees / positionAmount;
-            for (var i = -degrees / 2; i <= degrees / 2; i += step)
-            {
-                var rotatedPosition = rotateAround.To2D() + distance * direction.Rotated(Geometry.DegreeToRadian(i));
-                posList.Add(rotatedPosition.To3D());
-            }
-            return posList;
-        }
 
 
         public static void Execute()
@@ -104,7 +88,7 @@ namespace Karthus
             Q2 = new Spell.Skillshot(SpellSlot.Q, 875, SkillShotType.Circular, 650, int.MaxValue, 100);
             W = new Spell.Skillshot(SpellSlot.W, 875, SkillShotType.Circular, 500, int.MaxValue, 70);
             E = new Spell.Active(SpellSlot.E, 510);
-            R = new Spell.Skillshot(SpellSlot.R, 25000, SkillShotType.Circular, 3000, int.MaxValu()e, int.MaxValue);
+            R = new Spell.Skillshot(SpellSlot.R, 25000, SkillShotType.Circular, 3000, int.MaxValue, int.MaxValue);
 
 
             menuIni = MainMenu.AddMenu("Karthus", "Karthus");
@@ -205,7 +189,21 @@ namespace Karthus
             Obj_AI_Base.OnProcessSpellCast += Obj_AI_Base_OnProcessSpellCast2;
             }
         
-
+        public static List<Vector3> RotatedPositions(Vector3 rotateAround, Vector3 rotateTowards, int degrees,
+        int positionAmount = 0, float distance = 0)
+        {
+            if (distance == 0) distance = rotateAround.Distance(rotateTowards);
+            if (positionAmount == 0) positionAmount = degrees / 10;
+            var direction = (rotateTowards - rotateAround).Normalized().To2D();
+            var posList = new List<Vector3>();
+            var step = degrees / positionAmount;
+            for (var i = -degrees / 2; i <= degrees / 2; i += step)
+            {
+                var rotatedPosition = rotateAround.To2D() + distance * direction.Rotated(Geometry.DegreeToRadian(i));
+                posList.Add(rotatedPosition.To3D());
+            }
+            return posList;
+        }
         
         private static void Obj_AI_Base_OnProcessSpellCast2(Obj_AI_Base sender, GameObjectProcessSpellCastEventArgs args)
         {
@@ -870,7 +868,6 @@ namespace Karthus
 
        private static void LastHit()
         {
-            
             var canQ = LaneMenu.Get<CheckBox>("LUse_Q").CurrentValue && Q.IsReady();
             if (canQ && player.ManaPercent >= LaneMenu.Get<Slider>("LHQPercent").CurrentValue)
             {
@@ -893,7 +890,6 @@ namespace Karthus
 
                 if (Q.IsReady() && location.MinionsHit > 0)
                 {
-                   
                     Q.Cast(location.Position.To3D());
                 }
             }
