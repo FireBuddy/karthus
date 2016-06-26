@@ -890,7 +890,7 @@ namespace Karthus
 
                 if (Q.IsReady() && location.MinionsHit > 0)
                 {
-                    RotatedPositions(location.ServerPosition, Player.Instance.ServerPosition,1,10,100);
+                    RotatedPositions(location.Position,location.Position ,10);
                     Q.Cast(location.Position.To3D());
                 }
             }
