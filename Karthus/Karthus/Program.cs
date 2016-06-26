@@ -883,7 +883,7 @@ namespace Karthus
                         EntityManager.MinionsAndMonsters.EnemyMinions.Where(
                             x =>
                             x.Distance(Player.Instance) <= Q.Range && x.Health > 5 && !x.IsDead && x.IsValid
-                            && Prediction.Health.GetPrediction(x, (int)(Q.CastDelay = 1050)) < (1 * player.GetSpellDamage(x, SpellSlot.Q)))
+                            && Prediction.Health.GetPrediction(x, (int)(Q.CastDelay = 900)) < (1 * player.GetSpellDamage(x, SpellSlot.Q)))
                             .Select(xm => xm.ServerPosition.To2D())
                             .ToList(),
                         Q.Width,
@@ -893,7 +893,7 @@ namespace Karthus
                         EntityManager.MinionsAndMonsters.EnemyMinions.Where(
                             x =>
                             x.Distance(Player.Instance) <= Q.Range && x.Health > 5 && !x.IsDead && x.IsValid
-                            && Prediction.Health.GetPrediction(x, (int)(Q.CastDelay = 1050)) < (2 * player.GetSpellDamage(x, SpellSlot.Q)))
+                            && Prediction.Health.GetPrediction(x, (int)(Q.CastDelay = 900)) < (2 * player.GetSpellDamage(x, SpellSlot.Q)))
                             .Select(xm => xm.ServerPosition.To2D())
                             .ToList(),
                         Q.Width,
