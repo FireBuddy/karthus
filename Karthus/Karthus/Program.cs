@@ -812,7 +812,7 @@ namespace Karthus
             return true;
         }
 
-        private static void JungleClear()
+        private static void JungleClearr()
         {
             var canQ = LaneMenu.Get<CheckBox>("JUse_Q").CurrentValue && Q.IsReady();
             if (canQ && Q.IsReady() && player.ManaPercent >= LaneMenu.Get<Slider>("JQPercent").CurrentValue)
@@ -838,13 +838,13 @@ namespace Karthus
             }
         }
 
-        protected override void JungleClear(Menu menu)
+        protected override void JungleClear()
         {
             if (MyHero.ManaPercent >= 50)
             {
 
             }
-            base.JungleClear(menu);
+            base.JungleClear();
         }
         private static void LaneClear()
         { 
