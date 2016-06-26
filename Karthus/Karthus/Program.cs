@@ -886,7 +886,7 @@ namespace Karthus
                             && Prediction.Health.GetPrediction(x, (int)(Q.CastDelay = 1000)) < (0.93 * player.GetSpellDamage(x, SpellSlot.Q)))
                             .Select(xm => xm.ServerPosition.To2D())
                             .ToList(),
-                        Q.Width + 100,
+                        Q.Width,
                         Q.Range);
                 var locationtwo =
                     GetBestCircularFarmLocation(
@@ -896,7 +896,7 @@ namespace Karthus
                             && Prediction.Health.GetPrediction(x, (int)(Q.CastDelay = 1000)) < (1.98 * player.GetSpellDamage(x, SpellSlot.Q)))
                             .Select(xm => xm.ServerPosition.To2D())
                             .ToList(),
-                        Q.Width + 100,
+                        Q.Width,
                         Q.Range);
 
                 if (Q.IsReady() && locationtwo.MinionsHit > 0)
@@ -904,7 +904,7 @@ namespace Karthus
                     var Positions = RotatedPositions(locationtwo.Position.To3D(), Game.CursorPos, 360, 30, 80);
                     foreach ( var rotatedPosition in Positions)
                     {
-                        var Minions = EntityManager.MinionsAndMonsters.GetLaneMinions(EntityManager.UnitTeam.Both,rotatedPosition, 80).Count();
+                        var Minions = EntityManager.MinionsAndMonsters.GetLaneMinions(EntityManager.UnitTeam.Both,rotatedPosition, 100).Count();
                         {
                            if (Minions > 1) return; 
                            Q.Cast(rotatedPosition);
