@@ -903,10 +903,10 @@ namespace Karthus
                 {
                     var Zero = new Vector3(locationtwo.Position.To3D().X + 100, locationtwo.Position.To3D().Y, locationtwo.Position.To3D().Z);
                     {
-                        var Minions = EntityManager.MinionsAndMonsters.GetLaneMinions(EntityManager.UnitTeam.Both,Player.Instance.ServerPosition, 110).Count();
+                        var Minions = EntityManager.MinionsAndMonsters.GetLaneMinions(EntityManager.UnitTeam.Both,Zero, 110).Count();
                         {
                            if (Minions > 1) return; 
-                           Q.Cast(Player.Instance.ServerPosition);
+                           Q.Cast(Zero);
                         }
                         
                     }
