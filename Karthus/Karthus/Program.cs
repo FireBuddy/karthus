@@ -891,10 +891,10 @@ namespace Karthus
 
                 if (Q.IsReady() && location.MinionsHit > 0)
                 {
-                    var Positions = RotatedPositions(location.Position.To3D(), Game.CursorPos, 360, 72, 60);
+                    var Positions = RotatedPositions(location.Position.To3D(), Game.CursorPos, 360, 30, 80);
                     foreach ( var rotatedPosition in Positions)
                     {
-                        var Minions = EntityManager.MinionsAndMonsters.GetLaneMinions(EntityManager.UnitTeam.Both,rotatedPosition, 50).Count();
+                        var Minions = EntityManager.MinionsAndMonsters.GetLaneMinions(EntityManager.UnitTeam.Both,rotatedPosition, 80).Count();
                         {
                            if (Minions > 1) return; 
                            Q.Cast(rotatedPosition);
