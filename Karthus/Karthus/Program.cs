@@ -892,7 +892,11 @@ namespace Karthus
                 if (Q.IsReady() && location.MinionsHit > 0)
                 {
                     var Positions = RotatedPositions(location.Position.To3D(), Game.CursorPos, 360, 72, 60);
-                    Q.Cast(location.Position.To3D());
+                    foreach (rotatedPosition in Positions)
+                    {
+                    
+                        
+                    }
                 }
             }
             if (HarassMenu.Get<CheckBox>("HUse_E").CurrentValue && HarassMenu.Get<CheckBox>("E_LastHit").CurrentValue && E.IsReady()
