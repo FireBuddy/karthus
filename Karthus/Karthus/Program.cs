@@ -911,7 +911,7 @@ namespace Karthus
                         
                     }
                 }
-                if (Q.IsReady() && locationtwo.MinionsHit > 0)
+                else if (Q.IsReady() && locationtwo.MinionsHit > 0)
                 {
                     var Nine = new Vector3(locationtwo.Position.To3D().X, locationtwo.Position.To3D().Y + 100, locationtwo.Position.To3D().Z);
                     {
@@ -923,7 +923,7 @@ namespace Karthus
                         
                     }
                 }
-                if (Q.IsReady() && locationtwo.MinionsHit > 0)
+                else if (Q.IsReady() && locationtwo.MinionsHit > 0)
                 {
                     var OneEight = new Vector3(locationtwo.Position.To3D().X - 100, locationtwo.Position.To3D().Y, locationtwo.Position.To3D().Z);
                     {
@@ -935,7 +935,7 @@ namespace Karthus
                         
                     }
                 }
-                if (Q.IsReady() && locationtwo.MinionsHit > 0)
+                else if (Q.IsReady() && locationtwo.MinionsHit > 0)
                 {
                     var TwoSeven = new Vector3(locationtwo.Position.To3D().X, locationtwo.Position.To3D().Y - 100, locationtwo.Position.To3D().Z);
                     {
@@ -947,7 +947,7 @@ namespace Karthus
                         
                     }
                 }
-                if (Q.IsReady() && location.MinionsHit > 0)
+                else if (Q.IsReady() && location.MinionsHit > 0)
                 {
 
                     {
