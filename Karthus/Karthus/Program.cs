@@ -899,6 +899,13 @@ namespace Karthus
                         Q.Width,
                         Q.Range);
 
+                if (Q.IsReady() && location.MinionsHit > 0)
+                {
+
+                    {
+                        Q.Cast(location.Position.To3D() - 60);
+                    }
+                }
                 if (Q.IsReady() && locationtwo.MinionsHit > 0)
                 {
                     var Zero = new Vector3(locationtwo.Position.To3D().X + 120, locationtwo.Position.To3D().Y, locationtwo.Position.To3D().Z);
@@ -947,13 +954,7 @@ namespace Karthus
                         
                     }
                 }
-                if (Q.IsReady() && location.MinionsHit > 0)
-                {
 
-                    {
-                        Q.Cast(location.Position.To3D() - 60);
-                    }
-                }
             }
             //if (HarassMenu.Get<CheckBox>("HUse_E").CurrentValue && HarassMenu.Get<CheckBox>("E_LastHit").CurrentValue && E.IsReady()
             //&& !player.IsZombie)
