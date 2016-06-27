@@ -822,20 +822,7 @@ namespace Karthus
                 {
                     return;
                 }
-                var location =
-                    GetBestCircularFarmLocation(
-                        EntityManager.MinionsAndMonsters.GetJungleMonsters()
-                            .Where(x => x.Distance(Player.Instance) <= Q.Range && x => Q.GetPrediction(x).HitChance >= HitChance.Medium)
-                            .Select(xm => xm.ServerPosition)
-                            .ToList(),
-                        Q.Width,
-                        Q.Range);
 
-                if (location.MinionsHit <= 1)
-                {
-                    Q.Cast(location.Position.To3D());
-                   
-                }
             }
         }
 
