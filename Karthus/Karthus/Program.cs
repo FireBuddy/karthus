@@ -825,8 +825,8 @@ namespace Karthus
                 var location =
                     GetBestCircularFarmLocation(
                         EntityManager.MinionsAndMonsters.GetJungleMonsters()
-                            .Where(x => x.Distance(Player.Instance) <= Q.Range && x => Q.GetPrediction(x))
-                            .Select(x => x.CastPosition)
+                            .Where(x => x.Distance(Player.Instance) <= Q.Range && x => Q.GetPrediction(x).HitChance >= HitChance.Medium)
+                            .Select(xm => xm.ServerPosition)
                             .ToList(),
                         Q.Width,
                         Q.Range);
