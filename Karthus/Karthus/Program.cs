@@ -790,22 +790,25 @@ namespace Karthus
                         return false;
                     }
                     var predQ = Q2.GetPrediction(qTarget);
+                    var RDPos = qTarget.ServerPosition.X - Player.Instance.ServerPosition.X;
+                    var RDPos2 = qTarget.ServerPosition.Y - Player.Instance.ServerPosition.Y;
+                    var RPos = new Vector3(predQ.CastPosition.X + RDPos , predQ.CastPosition.Y + RDPos2, predQ.CastPosition.Z);
                     if (!cz && predQ.HitChance >= HitChance.High)
                     {
 
                         if (ObjectManager.Player.Position.Distance(qTarget.ServerPosition) <= 750)   
                             {
-                                    Q.Cast(predQ.CastPosition);
+                                    Q.Cast(RPos);
                             }
                         if (ObjectManager.Player.Position.Distance(qTarget.ServerPosition) > 750)   
                             {
-                                    Q.Cast(Player.Instance.Position.Extend(qTarget.ServerPosition, 874).To3D());
+                                    Q.Cast(Player.Instance.Position.Extend(RPos, 874).To3D());
                             }
                         
                     }
                     else
                     {
-                        Q.Cast(qTarget.ServerPosition);
+                        Q.Cast(RPos);
                     }
                 }
             }
