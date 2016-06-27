@@ -616,7 +616,7 @@ namespace Karthus
                         foreach (var Minion in Minions)
                         {
                         var predQ = Q2.GetPrediction(qTarget);
-                        var RDPos = (qTarget.ServerPosition.X - Minion.ServerPosition.X).Normalized().To2D();
+                        var RDPos = (qTarget.ServerPosition.X - Minion.ServerPosition.X);
                         
                         var RDPos2 = qTarget.ServerPosition.Y - Minion.ServerPosition.Y;
  
