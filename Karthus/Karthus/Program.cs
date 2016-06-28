@@ -797,15 +797,11 @@ namespace Karthus
                     if (!cz && predQ.HitChance >= HitChance.High)
                     {
 
-                        if (ObjectManager.Player.Position.Distance(qTarget.ServerPosition) <= 750)   
+                        if (ObjectManager.Player.Position.Distance(qTarget.ServerPosition) <= 900)   
                             {
                                     Q.Cast(RPosn + predQ.CastPosition);
                             }
-                        if (ObjectManager.Player.Position.Distance(qTarget.ServerPosition) > 750)   
-                            {
-                                    Q.Cast(Player.Instance.Position.Extend(RPosn + predQ.CastPosition, 874).To3D());
-                            }
-                        
+
                     }
                     else
                     {
