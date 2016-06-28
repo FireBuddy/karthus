@@ -226,7 +226,7 @@ namespace Karthus
         private static void Obj_AI_Base_OnBasicAttack(Obj_AI_Base sender, GameObjectProcessSpellCastEventArgs args)
         {
             var flags = Orbwalker.ActiveModesFlags;
-            if (sender == null)
+            if (sender == null || !Orbwalker.ActiveModesFlags.HasFlag(Orbwalker.ActiveModes.Harass))
             {
                return;
             }
@@ -236,7 +236,7 @@ namespace Karthus
                 
                 
                 {
-                 Q.Cast(qTarget.ServerPosition + 20);
+                 Q.Cast(qTarget.ServerPosition);
                 }
 
             }
