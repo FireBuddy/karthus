@@ -803,7 +803,7 @@ namespace Karthus
                             }
                         if (ObjectManager.Player.Position.Distance(qTarget.ServerPosition) > 750)   
                             {
-                                    Q.Cast(Player.Instance.Position.Extend(RPos, 874).To3D());
+                                    Q.Cast(Player.Instance.Position.Extend(RPosn + predQ.CastPosition, 874).To3D());
                             }
                         
                     }
