@@ -805,7 +805,7 @@ namespace Karthus
                     }
                     else
                     {
-                        Q.Cast(160 + predQ.CastPosition);
+                        Q.Cast(150 + predQ.CastPosition);
                     }
                 }
             }
