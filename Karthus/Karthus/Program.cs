@@ -790,7 +790,7 @@ namespace Karthus
                         return false;
                     }
                     var predQ = Q2.GetPrediction(qTarget);
-                    var RDPos = new vector3.Normalize(PredQ.CastPosition - Player.Instance.ServerPosition);
+                    var RDPos = new vector3.Normalize(PredQ.CastPosition - Player.Instance.ServerPosition) * 50;
                     var RDPos2 = qTarget.ServerPosition.Y - Player.Instance.ServerPosition.Y;
                     var RPos = new Vector3(predQ.CastPosition.X, predQ.CastPosition.Y + RDPos2, predQ.CastPosition.Z);
                     if (!cz && predQ.HitChance >= HitChance.High)
