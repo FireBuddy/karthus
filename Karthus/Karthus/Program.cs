@@ -792,13 +792,14 @@ namespace Karthus
                     var predQ = Q2.GetPrediction(qTarget);
                     var RDPos = qTarget.ServerPosition.X -  Player.Instance.ServerPosition.X;
                     var RDPos2 = qTarget.ServerPosition.Y - Player.Instance.ServerPosition.Y;
-                    var RPos = new Vector3(predQ.CastPosition.X, predQ.CastPosition.Y + RDPos2, predQ.CastPosition.Z);
+                    var RPos = new Vector3(predQ.CastPosition.X + RDPos, predQ.CastPosition.Y + RDPos2, predQ.CastPosition.Z);
+                    var RPosn = (RPos.Normalized() * 50);
                     if (!cz && predQ.HitChance >= HitChance.High)
                     {
 
                         if (ObjectManager.Player.Position.Distance(qTarget.ServerPosition) <= 750)   
                             {
-                                    Q.Cast(RPos.Normalized() * 150);
+                                    Q.Cast(RPosn);
                             }
                         if (ObjectManager.Player.Position.Distance(qTarget.ServerPosition) > 750)   
                             {
