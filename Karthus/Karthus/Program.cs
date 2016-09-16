@@ -612,6 +612,10 @@ namespace Karthus
                     if (HarassMenu.Get<CheckBox>("HUse_Q").CurrentValue && Q.IsReady())
                     {
                      var predQ = Q.GetPrediction(qTarget);
+                     if ( predQ.HitChancePercent >= 95)
+                     {
+                         Q.Cast(qTarget);
+                     }
                         
                     }
                 }
